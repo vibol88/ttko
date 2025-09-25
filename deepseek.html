@@ -6,7 +6,6 @@
     <title>Tailwind Animations Hub</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
-        // love
         tailwind.config = {
             theme: {
                 extend: {
@@ -18,15 +17,6 @@
                         'float': 'float 3s ease-in-out infinite',
                         'shake': 'shake 0.5s ease-in-out infinite',
                         'heartbeat': 'heartbeat 1.5s ease-in-out infinite',
-                        'slide-in': 'slideIn 0.5s ease-out',
-                        'fade-in': 'fadeIn 0.5s ease-out',
-                        'zoom-in': 'zoomIn 0.5s ease-out',
-                        'flip': 'flip 1s ease-in-out',
-                        'tada': 'tada 1s ease-in-out',
-                        'jello': 'jello 1s ease-in-out',
-                        'rubber-band': 'rubberBand 1s ease-in-out',
-                        'swing': 'swing 1s ease-in-out',
-                        'wobble': 'wobble 1s ease-in-out',
                     },
                     keyframes: {
                         float: {
@@ -44,64 +34,7 @@
                             '28%': { transform: 'scale(1)' },
                             '42%': { transform: 'scale(1.3)' },
                             '70%': { transform: 'scale(1)' },
-                        },
-                        slideIn: {
-                            '0%': { transform: 'translateX(-100%)', opacity: '0' },
-                            '100%': { transform: 'translateX(0)', opacity: '1' },
-                        },
-                        fadeIn: {
-                            '0%': { opacity: '0' },
-                            '100%': { opacity: '1' },
-                        },
-                        zoomIn: {
-                            '0%': { transform: 'scale(0.5)', opacity: '0' },
-                            '100%': { transform: 'scale(1)', opacity: '1' },
-                        },
-                        flip: {
-                            '0%': { transform: 'perspective(400px) rotateY(0)' },
-                            '50%': { transform: 'perspective(400px) rotateY(180deg)' },
-                            '100%': { transform: 'perspective(400px) rotateY(360deg)' },
-                        },
-                        tada: {
-                            '0%': { transform: 'scale(1)' },
-                            '10%, 20%': { transform: 'scale(0.9) rotate(-3deg)' },
-                            '30%, 50%, 70%, 90%': { transform: 'scale(1.1) rotate(3deg)' },
-                            '40%, 60%, 80%': { transform: 'scale(1.1) rotate(-3deg)' },
-                            '100%': { transform: 'scale(1) rotate(0)' },
-                        },
-                        jello: {
-                            '0%, 11.1%, 100%': { transform: 'translate3d(0, 0, 0)' },
-                            '22.2%': { transform: 'skewX(-12.5deg) skewY(-12.5deg)' },
-                            '33.3%': { transform: 'skewX(6.25deg) skewY(6.25deg)' },
-                            '44.4%': { transform: 'skewX(-3.125deg) skewY(-3.125deg)' },
-                            '55.5%': { transform: 'skewX(1.5625deg) skewY(1.5625deg)' },
-                            '66.6%': { transform: 'skewX(-0.78125deg) skewY(-0.78125deg)' },
-                            '77.7%': { transform: 'skewX(0.390625deg) skewY(0.390625deg)' },
-                            '88.8%': { transform: 'skewX(-0.1953125deg) skewY(-0.1953125deg)' },
-                        },
-                        rubberBand: {
-                            '0%': { transform: 'scale(1)' },
-                            '30%': { transform: 'scaleX(1.25) scaleY(0.75)' },
-                            '40%': { transform: 'scaleX(0.75) scaleY(1.25)' },
-                            '60%': { transform: 'scaleX(1.15) scaleY(0.85)' },
-                            '100%': { transform: 'scale(1)' },
-                        },
-                        swing: {
-                            '20%': { transform: 'rotate(15deg)' },
-                            '40%': { transform: 'rotate(-10deg)' },
-                            '60%': { transform: 'rotate(5deg)' },
-                            '80%': { transform: 'rotate(-5deg)' },
-                            '100%': { transform: 'rotate(0deg)' },
-                        },
-                        wobble: {
-                            '0%': { transform: 'translateX(0%)' },
-                            '15%': { transform: 'translateX(-25%) rotate(-5deg)' },
-                            '30%': { transform: 'translateX(20%) rotate(3deg)' },
-                            '45%': { transform: 'translateX(-15%) rotate(-3deg)' },
-                            '60%': { transform: 'translateX(10%) rotate(2deg)' },
-                            '75%': { transform: 'translateX(-5%) rotate(-1deg)' },
-                            '100%': { transform: 'translateX(0%)' },
-                        },
+                        }
                     }
                 }
             }
@@ -123,9 +56,14 @@
             min-height: 100vh;
         }
         
+        .gradient-text {
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
         .animation-card {
             transition: transform 0.3s ease, box-shadow 0.3s ease;
-            overflow: hidden;
         }
         
         .animation-card:hover {
@@ -145,27 +83,6 @@
             max-height: 500px;
         }
         
-        .gradient-text {
-            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        
-        .animation-preview {
-            transition: all 0.3s ease;
-        }
-        
-        .controls-panel {
-            background: rgba(255, 255, 255, 0.9);
-            backdrop-filter: blur(10px);
-            border-radius: 1rem;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-        }
-        
-        .animation-active {
-            box-shadow: 0 0 0 3px #667eea;
-        }
-        
         .animation-element {
             width: 100px;
             height: 100px;
@@ -178,18 +95,33 @@
             color: white;
         }
         
-        .tab-content {
+        .user-menu {
             display: none;
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background: white;
+            border-radius: 0.5rem;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            min-width: 150px;
+            z-index: 10;
         }
         
-        .tab-content.active {
+        .user-menu.active {
             display: block;
-            animation: fadeIn 0.5s ease-out;
         }
         
-        .tab-button.active {
+        .user-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
             color: white;
+            font-weight: bold;
+            cursor: pointer;
         }
         
         .modal {
@@ -216,93 +148,6 @@
             max-width: 400px;
             padding: 2rem;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-            transform: scale(0.9);
-            opacity: 0;
-            transition: all 0.3s ease;
-        }
-        
-        .modal.active .modal-content {
-            transform: scale(1);
-            opacity: 1;
-        }
-        
-        .resource-card {
-            transition: all 0.3s ease;
-            border-left: 4px solid transparent;
-        }
-        
-        .resource-card:hover {
-            transform: translateX(5px);
-            border-left-color: #667eea;
-        }
-        
-        .user-menu {
-            display: none;
-            position: absolute;
-            top: 100%;
-            right: 0;
-            background: white;
-            border-radius: 0.5rem;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-            min-width: 150px;
-            z-index: 10;
-        }
-        
-        .user-menu.active {
-            display: block;
-            animation: slideIn 0.3s ease-out;
-        }
-        
-        .user-avatar {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-weight: bold;
-            cursor: pointer;
-        }
-        
-        .will-change-transform {
-            will-change: transform;
-        }
-        
-        .tabs-container {
-            background: white;
-            border-radius: 1rem;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-        }
-        
-        .tabs-header {
-            display: flex;
-            border-bottom: 1px solid #e2e8f0;
-            background: #f8fafc;
-        }
-        
-        .tab-header {
-            padding: 1rem 1.5rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            border-bottom: 3px solid transparent;
-        }
-        
-        .tab-header.active {
-            background: white;
-            border-bottom-color: #667eea;
-            font-weight: 600;
-        }
-        
-        .tab-panel {
-            padding: 2rem;
-            display: none;
-        }
-        
-        .tab-panel.active {
-            display: block;
         }
         
         .notification {
@@ -325,16 +170,6 @@
             background-color: #10b981;
             color: white;
         }
-        
-        .notification.error {
-            background-color: #ef4444;
-            color: white;
-        }
-        
-        .notification.info {
-            background-color: #3b82f6;
-            color: white;
-        }
     </style>
 </head>
 <body class="min-h-screen">
@@ -353,19 +188,19 @@
                 <a href="#resources" class="text-gray-600 hover:text-purple-600 transition-colors">Resources</a>
                 
                 <div class="relative" id="userSection">
-                    <div class="user-avatar" id="userAvatar" aria-label="User menu" role="button" aria-expanded="false" aria-controls="userMenu">
+                    <div class="user-avatar" id="userAvatar">
                         <i class="fas fa-user"></i>
                     </div>
-                    <div class="user-menu" id="userMenu" role="menu">
+                    <div class="user-menu" id="userMenu">
                         <div class="p-4 border-b">
                             <p class="font-semibold" id="userName">Guest User</p>
                             <p class="text-sm text-gray-500" id="userEmail">guest@example.com</p>
                         </div>
                         <div class="p-2">
-                            <button class="w-full text-left px-3 py-2 rounded hover:bg-gray-100 transition-colors" id="profileBtn" role="menuitem">
+                            <button class="w-full text-left px-3 py-2 rounded hover:bg-gray-100 transition-colors" id="profileBtn">
                                 <i class="fas fa-user-circle mr-2"></i>Profile
                             </button>
-                            <button class="w-full text-left px-3 py-2 rounded hover:bg-gray-100 transition-colors" id="logoutBtn" role="menuitem">
+                            <button class="w-full text-left px-3 py-2 rounded hover:bg-gray-100 transition-colors" id="logoutBtn">
                                 <i class="fas fa-sign-out-alt mr-2"></i>Logout
                             </button>
                         </div>
@@ -377,7 +212,7 @@
                     <button class="px-4 py-2 bg-gradient-to-r from-purple-500 to-indigo-600 text-white rounded-lg hover:shadow-lg transition-all" id="registerBtn">Register</button>
                 </div>
             </nav>
-            <button class="md:hidden text-gray-600" id="mobileMenuBtn" aria-label="Toggle mobile menu">
+            <button class="md:hidden text-gray-600" id="mobileMenuBtn">
                 <i class="fas fa-bars text-xl"></i>
             </button>
         </div>
@@ -407,11 +242,11 @@
         </div>
         
         <div class="mt-16 flex justify-center space-x-8 flex-wrap">
-            <div class="w-16 h-16 bg-gradient-to-r from-purple-400 to-indigo-500 rounded-full animate-bounce will-change-transform"></div>
-            <div class="w-16 h-16 bg-gradient-to-r from-pink-400 to-red-500 rounded-lg animate-pulse will-change-transform"></div>
-            <div class="w-16 h-16 bg-gradient-to-r from-green-400 to-teal-500 rounded-full animate-spin will-change-transform"></div>
-            <div class="w-16 h-16 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-lg animate-ping will-change-transform"></div>
-            <div class="w-16 h-16 bg-gradient-to-r from-blue-400 to-cyan-500 rounded-lg animate-float will-change-transform"></div>
+            <div class="w-16 h-16 bg-gradient-to-r from-purple-400 to-indigo-500 rounded-full animate-bounce"></div>
+            <div class="w-16 h-16 bg-gradient-to-r from-pink-400 to-red-500 rounded-lg animate-pulse"></div>
+            <div class="w-16 h-16 bg-gradient-to-r from-green-400 to-teal-500 rounded-full animate-spin"></div>
+            <div class="w-16 h-16 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-lg animate-ping"></div>
+            <div class="w-16 h-16 bg-gradient-to-r from-blue-400 to-cyan-500 rounded-lg animate-float"></div>
         </div>
     </section>
 
@@ -426,7 +261,7 @@
                         <h3 class="text-xl font-semibold">Customize Your Animation</h3>
                         
                         <div>
-                            <label class="block text-gray-700 mb-2" for="animationSelect">Animation Type</label>
+                            <label class="block text-gray-700 mb-2">Animation Type</label>
                             <select class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500" id="animationSelect">
                                 <option value="bounce">Bounce</option>
                                 <option value="pulse">Pulse</option>
@@ -435,14 +270,11 @@
                                 <option value="float">Float</option>
                                 <option value="shake">Shake</option>
                                 <option value="heartbeat">Heartbeat</option>
-                                <option value="tada">Tada</option>
-                                <option value="jello">Jello</option>
-                                <option value="rubber-band">Rubber Band</option>
                             </select>
                         </div>
                         
                         <div>
-                            <label class="block text-gray-700 mb-2" for="speedControl">Animation Speed</label>
+                            <label class="block text-gray-700 mb-2">Animation Speed</label>
                             <input type="range" min="1" max="10" value="5" class="w-full" id="speedControl">
                             <div class="flex justify-between text-sm text-gray-600 mt-1">
                                 <span>Slow</span>
@@ -454,11 +286,11 @@
                         <div>
                             <label class="block text-gray-700 mb-2">Element Color</label>
                             <div class="flex space-x-2">
-                                <button class="color-option w-8 h-8 rounded-full bg-gradient-to-r from-purple-400 to-indigo-500 border-2 border-white shadow-md active" data-color="purple" aria-label="Purple color"></button>
-                                <button class="color-option w-8 h-8 rounded-full bg-gradient-to-r from-pink-400 to-red-500 border-2 border-white shadow-md" data-color="pink" aria-label="Pink color"></button>
-                                <button class="color-option w-8 h-8 rounded-full bg-gradient-to-r from-green-400 to-teal-500 border-2 border-white shadow-md" data-color="green" aria-label="Green color"></button>
-                                <button class="color-option w-8 h-8 rounded-full bg-gradient-to-r from-yellow-400 to-orange-500 border-2 border-white shadow-md" data-color="yellow" aria-label="Yellow color"></button>
-                                <button class="color-option w-8 h-8 rounded-full bg-gradient-to-r from-blue-400 to-cyan-500 border-2 border-white shadow-md" data-color="blue" aria-label="Blue color"></button>
+                                <button class="color-option w-8 h-8 rounded-full bg-gradient-to-r from-purple-400 to-indigo-500 border-2 border-white shadow-md active" data-color="purple"></button>
+                                <button class="color-option w-8 h-8 rounded-full bg-gradient-to-r from-pink-400 to-red-500 border-2 border-white shadow-md" data-color="pink"></button>
+                                <button class="color-option w-8 h-8 rounded-full bg-gradient-to-r from-green-400 to-teal-500 border-2 border-white shadow-md" data-color="green"></button>
+                                <button class="color-option w-8 h-8 rounded-full bg-gradient-to-r from-yellow-400 to-orange-500 border-2 border-white shadow-md" data-color="yellow"></button>
+                                <button class="color-option w-8 h-8 rounded-full bg-gradient-to-r from-blue-400 to-cyan-500 border-2 border-white shadow-md" data-color="blue"></button>
                             </div>
                         </div>
                         
@@ -471,7 +303,7 @@
                     <div class="flex flex-col items-center justify-center">
                         <h3 class="text-xl font-semibold mb-4">Preview</h3>
                         <div class="w-40 h-40 flex items-center justify-center mb-6">
-                            <div id="playgroundElement" class="animation-element animate-bounce will-change-transform">
+                            <div id="playgroundElement" class="animation-element animate-bounce">
                                 <i class="fas fa-star"></i>
                             </div>
                         </div>
@@ -496,12 +328,12 @@
                 <div class="animation-card bg-white rounded-xl p-6 shadow-md">
                     <div class="flex justify-between items-center mb-4">
                         <h3 class="text-xl font-semibold">Bounce</h3>
-                        <button class="text-purple-600 toggle-code" data-target="example-code1" aria-label="Toggle code example">
+                        <button class="text-purple-600 toggle-code" data-target="example-code1">
                             <i class="fas fa-code"></i>
                         </button>
                     </div>
                     <div class="flex justify-center py-8">
-                        <div class="w-20 h-20 bg-gradient-to-r from-purple-400 to-indigo-500 rounded-full animate-bounce will-change-transform"></div>
+                        <div class="w-20 h-20 bg-gradient-to-r from-purple-400 to-indigo-500 rounded-full animate-bounce"></div>
                     </div>
                     <div id="example-code1" class="code-block mt-4">
                         <pre class="text-sm text-gray-200 p-4 overflow-x-auto">
@@ -514,12 +346,12 @@
                 <div class="animation-card bg-white rounded-xl p-6 shadow-md">
                     <div class="flex justify-between items-center mb-4">
                         <h3 class="text-xl font-semibold">Pulse</h3>
-                        <button class="text-purple-600 toggle-code" data-target="example-code2" aria-label="Toggle code example">
+                        <button class="text-purple-600 toggle-code" data-target="example-code2">
                             <i class="fas fa-code"></i>
                         </button>
                     </div>
                     <div class="flex justify-center py-8">
-                        <div class="w-20 h-20 bg-gradient-to-r from-pink-400 to-red-500 rounded-lg animate-pulse will-change-transform"></div>
+                        <div class="w-20 h-20 bg-gradient-to-r from-pink-400 to-red-500 rounded-lg animate-pulse"></div>
                     </div>
                     <div id="example-code2" class="code-block mt-4">
                         <pre class="text-sm text-gray-200 p-4 overflow-x-auto">
@@ -532,116 +364,16 @@
                 <div class="animation-card bg-white rounded-xl p-6 shadow-md">
                     <div class="flex justify-between items-center mb-4">
                         <h3 class="text-xl font-semibold">Spin</h3>
-                        <button class="text-purple-600 toggle-code" data-target="example-code3" aria-label="Toggle code example">
+                        <button class="text-purple-600 toggle-code" data-target="example-code3">
                             <i class="fas fa-code"></i>
                         </button>
                     </div>
                     <div class="flex justify-center py-8">
-                        <div class="w-20 h-20 bg-gradient-to-r from-green-400 to-teal-500 rounded-full animate-spin will-change-transform"></div>
+                        <div class="w-20 h-20 bg-gradient-to-r from-green-400 to-teal-500 rounded-full animate-spin"></div>
                     </div>
                     <div id="example-code3" class="code-block mt-4">
                         <pre class="text-sm text-gray-200 p-4 overflow-x-auto">
 &lt;div class="animate-spin"&gt;
-  &lt;!-- Your content --&gt;
-&lt;/div&gt;</pre>
-                    </div>
-                </div>
-                
-                <div class="animation-card bg-white rounded-xl p-6 shadow-md">
-                    <div class="flex justify-between items-center mb-4">
-                        <h3 class="text-xl font-semibold">Float</h3>
-                        <button class="text-purple-600 toggle-code" data-target="example-code4" aria-label="Toggle code example">
-                            <i class="fas fa-code"></i>
-                        </button>
-                    </div>
-                    <div class="flex justify-center py-8">
-                        <div class="w-20 h-20 bg-gradient-to-r from-blue-400 to-cyan-500 rounded-lg animate-float will-change-transform"></div>
-                    </div>
-                    <div id="example-code4" class="code-block mt-4">
-                        <pre class="text-sm text-gray-200 p-4 overflow-x-auto">
-// Add to tailwind.config.js
-animation: {
-  float: 'float 3s ease-in-out infinite'
-},
-keyframes: {
-  float: {
-    '0%, 100%': { transform: 'translateY(0)' },
-    '50%': { transform: 'translateY(-10px)' },
-  }
-}
-
-// HTML
-&lt;div class="animate-float"&gt;
-  &lt;!-- Your content --&gt;
-&lt;/div&gt;</pre>
-                    </div>
-                </div>
-                
-                <div class="animation-card bg-white rounded-xl p-6 shadow-md">
-                    <div class="flex justify-between items-center mb-4">
-                        <h3 class="text-xl font-semibold">Heartbeat</h3>
-                        <button class="text-purple-600 toggle-code" data-target="example-code5" aria-label="Toggle code example">
-                            <i class="fas fa-code"></i>
-                        </button>
-                    </div>
-                    <div class="flex justify-center py-8">
-                        <div class="w-20 h-20 bg-gradient-to-r from-red-400 to-pink-500 rounded-lg animate-heartbeat flex items-center justify-center will-change-transform">
-                            <i class="fas fa-heart text-white text-2xl"></i>
-                        </div>
-                    </div>
-                    <div id="example-code5" class="code-block mt-4">
-                        <pre class="text-sm text-gray-200 p-4 overflow-x-auto">
-// Add to tailwind.config.js
-animation: {
-  heartbeat: 'heartbeat 1.5s ease-in-out infinite'
-},
-keyframes: {
-  heartbeat: {
-    '0%': { transform: 'scale(1)' },
-    '14%': { transform: 'scale(1.3)' },
-    '28%': { transform: 'scale(1)' },
-    '42%': { transform: 'scale(1.3)' },
-    '70%': { transform: 'scale(1)' },
-  }
-}
-
-// HTML
-&lt;div class="animate-heartbeat"&gt;
-  &lt;!-- Your content --&gt;
-&lt;/div&gt;</pre>
-                    </div>
-                </div>
-                
-                <div class="animation-card bg-white rounded-xl p-6 shadow-md">
-                    <div class="flex justify-between items-center mb-4">
-                        <h3 class="text-xl font-semibold">Tada</h3>
-                        <button class="text-purple-600 toggle-code" data-target="example-code6" aria-label="Toggle code example">
-                            <i class="fas fa-code"></i>
-                        </button>
-                    </div>
-                    <div class="flex justify-center py-8">
-                        <div class="w-20 h-20 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-lg animate-tada flex items-center justify-center will-change-transform">
-                            <i class="fas fa-gift text-white text-2xl"></i>
-                        </div>
-                    </div>
-                    <div id="example-code6" class="code-block mt-4">
-                        <pre class="text-sm text-gray-200 p-4 overflow-x-auto">
-// Add to tailwind.config.js
-animation: {
-  tada: 'tada 1s ease-in-out infinite'
-},
-keyframes: {
-  tada: {
-    '0%': { transform: 'scale(1)' },
-    '10%, 20%': { transform: 'scale(0.9) rotate(-3deg)' },
-    '30%, 50%, 70%, 90%': { transform: 'scale(1.1) rotate(3deg)' },
-    '40%, 60%, 80%': { transform: 'scale(1.1) rotate(-3deg)' },
-    '100%': { transform: 'scale(1) rotate(0)' },
-  }
-}
-
-// HTML
-&lt;div class="animate-tada"&gt;
   &lt;!-- Your content --&gt;
 &lt;/div&gt;</pre>
                     </div>
@@ -656,152 +388,32 @@ keyframes: {
             <h2 class="text-3xl font-bold text-center mb-12">Resources & Tools</h2>
             
             <div class="max-w-5xl mx-auto">
-                <div class="tabs-container mb-12">
-                    <div class="tabs-header">
-                        <div class="tab-header active" data-tab="documentation">Documentation</div>
-                        <div class="tab-header" data-tab="tutorials">Tutorials</div>
-                        <div class="tab-header" data-tab="tools">Tools</div>
-                        <div class="tab-header" data-tab="community">Community</div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="resource-card bg-gray-50 rounded-xl p-6 shadow-sm">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 bg-gradient-to-r from-purple-400 to-indigo-500 rounded-lg flex items-center justify-center mr-4">
+                                <i class="fas fa-book text-white text-xl"></i>
+                            </div>
+                            <h3 class="text-xl font-semibold">Official Documentation</h3>
+                        </div>
+                        <p class="text-gray-600 mb-4">Comprehensive guide to Tailwind CSS animations with examples and API reference.</p>
+                        <a href="https://tailwindcss.com/docs/animation" class="text-purple-600 font-medium inline-flex items-center">
+                            Visit Docs <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
                     </div>
                     
-                    <div class="tab-panel active" id="documentation-tab">
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                            <div class="resource-card bg-gray-50 rounded-xl p-6 shadow-sm">
-                                <div class="flex items-center mb-4">
-                                    <div class="w-12 h-12 bg-gradient-to-r from-purple-400 to-indigo-500 rounded-lg flex items-center justify-center mr-4">
-                                        <i class="fas fa-book text-white text-xl"></i>
-                                    </div>
-                                    <h3 class="text-xl font-semibold">Official Documentation</h3>
-                                </div>
-                                <p class="text-gray-600 mb-4">Comprehensive guide to Tailwind CSS animations with examples and API reference.</p>
-                                <a href="https://tailwindcss.com/docs/animation" class="text-purple-600 font-medium inline-flex items-center">
-                                    Visit Docs <i class="fas fa-arrow-right ml-2"></i>
-                                </a>
+                    <div class="resource-card bg-gray-50 rounded-xl p-6 shadow-sm">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 bg-gradient-to-r from-green-400 to-teal-500 rounded-lg flex items-center justify-center mr-4">
+                                <i class="fas fa-play-circle text-white text-xl"></i>
                             </div>
-                            
-                            <div class="resource-card bg-gray-50 rounded-xl p-6 shadow-sm">
-                                <div class="flex items-center mb-4">
-                                    <div class="w-12 h-12 bg-gradient-to-r from-pink-400 to-red-500 rounded-lg flex items-center justify-center mr-4">
-                                        <i class="fas fa-clipboard-list text-white text-xl"></i>
-                                    </div>
-                                    <h3 class="text-xl font-semibold">Animation Cheatsheet</h3>
-                                </div>
-                                <p class="text-gray-600 mb-4">Quick reference for all Tailwind animation classes and their effects.</p>
-                                <a href="https://nerdcave.com/tailwind-cheat-sheet" class="text-purple-600 font-medium inline-flex items-center">
-                                    View Cheatsheet <i class="fas fa-arrow-right ml-2"></i>
-                                </a>
-                            </div>
+                            <h3 class="text-xl font-semibold">Video Tutorials</h3>
                         </div>
+                        <p class="text-gray-600 mb-4">Step-by-step video guides for creating custom animations with Tailwind CSS.</p>
+                        <a href="https://www.youtube.com/results?search_query=tailwind+css+animations" class="text-purple-600 font-medium inline-flex items-center">
+                            Watch Videos <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
                     </div>
-                    
-                    <div class="tab-panel" id="tutorials-tab">
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                            <div class="resource-card bg-gray-50 rounded-xl p-6 shadow-sm">
-                                <div class="flex items-center mb-4">
-                                    <div class="w-12 h-12 bg-gradient-to-r from-green-400 to-teal-500 rounded-lg flex items-center justify-center mr-4">
-                                        <i class="fas fa-play-circle text-white text-xl"></i>
-                                    </div>
-                                    <h3 class="text-xl font-semibold">Video Tutorials</h3>
-                                </div>
-                                <p class="text-gray-600 mb-4">Step-by-step video guides for creating custom animations with Tailwind CSS.</p>
-                                <a href="https://www.youtube.com/results?search_query=tailwind+css+animations" class="text-purple-600 font-medium inline-flex items-center">
-                                    Watch Videos <i class="fas fa-arrow-right ml-2"></i>
-                                </a>
-                            </div>
-                            
-                            <div class="resource-card bg-gray-50 rounded-xl p-6 shadow-sm">
-                                <div class="flex items-center mb-4">
-                                    <div class="w-12 h-12 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-lg flex items-center justify-center mr-4">
-                                        <i class="fas fa-palette text-white text-xl"></i>
-                                    </div>
-                                    <h3 class="text-xl font-semibold">UI Component Libraries</h3>
-                                </div>
-                                <p class="text-gray-600 mb-4">Pre-built animated components using Tailwind CSS for faster development.</p>
-                                <a href="https://tailwindui.com" class="text-purple-600 font-medium inline-flex items-center">
-                                    Explore Libraries <i class="fas fa-arrow-right ml-2"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="tab-panel" id="tools-tab">
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                            <div class="resource-card bg-gray-50 rounded-xl p-6 shadow-sm">
-                                <div class="flex items-center mb-4">
-                                    <div class="w-12 h-12 bg-gradient-to-r from-blue-400 to-cyan-500 rounded-lg flex items-center justify-center mr-4">
-                                        <i class="fas fa-cogs text-white text-xl"></i>
-                                    </div>
-                                    <h3 class="text-xl font-semibold">Animation Generator</h3>
-                                </div>
-                                <p class="text-gray-600 mb-4">Create custom animations with our visual animation generator tool.</p>
-                                <a href="#" class="text-purple-600 font-medium inline-flex items-center">
-                                    Try Generator <i class="fas fa-arrow-right ml-2"></i>
-                                </a>
-                            </div>
-                            
-                            <div class="resource-card bg-gray-50 rounded-xl p-6 shadow-sm">
-                                <div class="flex items-center mb-4">
-                                    <div class="w-12 h-12 bg-gradient-to-r from-indigo-400 to-purple-500 rounded-lg flex items-center justify-center mr-4">
-                                        <i class="fas fa-download text-white text-xl"></i>
-                                    </div>
-                                    <h3 class="text-xl font-semibold">Code Export</h3>
-                                </div>
-                                <p class="text-gray-600 mb-4">Export your animations as reusable code snippets for your projects.</p>
-                                <a href="#" class="text-purple-600 font-medium inline-flex items-center">
-                                    Export Code <i class="fas fa-arrow-right ml-2"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="tab-panel" id="community-tab">
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                            <div class="resource-card bg-gray-50 rounded-xl p-6 shadow-sm">
-                                <div class="flex items-center mb-4">
-                                    <div class="w-12 h-12 bg-gradient-to-r from-teal-400 to-green-500 rounded-lg flex items-center justify-center mr-4">
-                                        <i class="fas fa-comments text-white text-xl"></i>
-                                    </div>
-                                    <h3 class="text-xl font-semibold">Forums</h3>
-                                </div>
-                                <p class="text-gray-600 mb-4">Join discussions and get help from the Tailwind CSS community.</p>
-                                <a href="#" class="text-purple-600 font-medium inline-flex items-center">
-                                    Visit Forums <i class="fas fa-arrow-right ml-2"></i>
-                                </a>
-                            </div>
-                            
-                            <div class="resource-card bg-gray-50 rounded-xl p-6 shadow-sm">
-                                <div class="flex items-center mb-4">
-                                    <div class="w-12 h-12 bg-gradient-to-r from-orange-400 to-red-500 rounded-lg flex items-center justify-center mr-4">
-                                        <i class="fas fa-star text-white text-xl"></i>
-                                    </div>
-                                    <h3 class="text-xl font-semibold">Showcase</h3>
-                                </div>
-                                <p class="text-gray-600 mb-4">Explore inspiring examples of Tailwind animations in real projects.</p>
-                                <a href="#" class="text-purple-600 font-medium inline-flex items-center">
-                                    View Showcase <i class="fas fa-arrow-right ml-2"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="mt-12 bg-gradient-to-r from-purple-500 to-indigo-600 rounded-2xl p-8 text-white">
-                    <h3 class="text-2xl font-bold mb-4">Advanced Resources</h3>
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                        <div>
-                            <h4 class="font-semibold mb-2">Custom Keyframes</h4>
-                            <p class="text-purple-100">Learn how to create your own custom animations with keyframes.</p>
-                        </div>
-                        <div>
-                            <h4 class="font-semibold mb-2">Performance Tips</h4>
-                            <p class="text-purple-100">Optimize your animations for better performance and smoother UX.</p>
-                        </div>
-                        <div>
-                            <h4 class="font-semibold mb-2">Browser Support</h4>
-                            <p class="text-purple-100">Understand which browsers support which animation properties.</p>
-                        </div>
-                    </div>
-                    <button class="mt-6 bg-white text-purple-600 px-6 py-2 rounded-lg font-medium hover:bg-purple-50 transition-colors">Explore Advanced Topics</button>
                 </div>
             </div>
         </div>
@@ -823,22 +435,6 @@ keyframes: {
                         <li><a href="#resources" class="text-gray-400 hover:text-white transition-colors">Resources</a></li>
                     </ul>
                 </div>
-                <div>
-                    <h3 class="text-lg font-semibold mb-4">Tools</h3>
-                    <ul class="space-y-2">
-                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Animation Generator</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Code Export</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Custom Presets</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h3 class="text-lg font-semibold mb-4">Community</h3>
-                    <ul class="space-y-2">
-                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Forums</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Contribute</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Showcase</a></li>
-                    </ul>
-                </div>
             </div>
             <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
                 <p>&copy; 2023 Tailwind Animations Hub. All rights reserved.</p>
@@ -851,7 +447,7 @@ keyframes: {
         <div class="modal-content">
             <div class="flex justify-between items-center mb-6">
                 <h2 class="text-2xl font-bold">Login to Your Account</h2>
-                <button class="text-gray-500 hover:text-gray-700" id="closeLoginModal" aria-label="Close login modal">
+                <button class="text-gray-500 hover:text-gray-700" id="closeLoginModal">
                     <i class="fas fa-times"></i>
                 </button>
             </div>
@@ -877,7 +473,7 @@ keyframes: {
         <div class="modal-content">
             <div class="flex justify-between items-center mb-6">
                 <h2 class="text-2xl font-bold">Create Your Account</h2>
-                <button class="text-gray-500 hover:text-gray-700" id="closeRegisterModal" aria-label="Close register modal">
+                <button class="text-gray-500 hover:text-gray-700" id="closeRegisterModal">
                     <i class="fas fa-times"></i>
                 </button>
             </div>
@@ -937,10 +533,6 @@ keyframes: {
         const playgroundCode = document.getElementById('playgroundCode');
         const playgroundReset = document.getElementById('playgroundReset');
         const copyCode = document.getElementById('copyCode');
-        
-        // Tab elements
-        const tabHeaders = document.querySelectorAll('.tab-header');
-        const tabPanels = document.querySelectorAll('.tab-panel');
         
         // Event Listeners
         loginBtn.addEventListener('click', () => loginModal.classList.add('active'));
@@ -1009,8 +601,6 @@ keyframes: {
         
         // User menu toggle
         userAvatar.addEventListener('click', () => {
-            const isExpanded = userAvatar.getAttribute('aria-expanded') === 'true';
-            userAvatar.setAttribute('aria-expanded', !isExpanded);
             userMenu.classList.toggle('active');
         });
         
@@ -1018,7 +608,6 @@ keyframes: {
         document.addEventListener('click', (e) => {
             if (!userSection.contains(e.target)) {
                 userMenu.classList.remove('active');
-                userAvatar.setAttribute('aria-expanded', 'false');
             }
         });
         
@@ -1066,18 +655,6 @@ keyframes: {
             });
         });
         
-        // Tab functionality
-        tabHeaders.forEach(header => {
-            header.addEventListener('click', () => {
-                tabHeaders.forEach(h => h.classList.remove('active'));
-                tabPanels.forEach(p => p.classList.remove('active'));
-                
-                header.classList.add('active');
-                const tabId = header.getAttribute('data-tab');
-                document.getElementById(`${tabId}-tab`).classList.add('active');
-            });
-        });
-        
         // Functions
         function updateUserInterface() {
             if (currentUser) {
@@ -1097,7 +674,7 @@ keyframes: {
             notification.className = `notification ${type}`;
             notification.innerHTML = `
                 <div class="flex items-center">
-                    <i class="fas fa-${type === 'success' ? 'check' : type === 'error' ? 'exclamation' : 'info'} mr-2"></i>
+                    <i class="fas fa-${type === 'success' ? 'check' : 'info'} mr-2"></i>
                     <span>${message}</span>
                 </div>
             `;
@@ -1125,8 +702,7 @@ keyframes: {
             
             playgroundElement.classList.remove(
                 'animate-bounce', 'animate-pulse', 'animate-spin', 'animate-ping',
-                'animate-float', 'animate-shake', 'animate-heartbeat',
-                'animate-tada', 'animate-jello', 'animate-rubber-band'
+                'animate-float', 'animate-shake', 'animate-heartbeat'
             );
             
             playgroundElement.classList.add(`animate-${animation}`);
@@ -1181,9 +757,6 @@ keyframes: {
             const code = playgroundCode.textContent;
             navigator.clipboard.writeText(code).then(() => {
                 showNotification('Code copied to clipboard!', 'success');
-            }).catch(err => {
-                console.error('Failed to copy code: ', err);
-                showNotification('Failed to copy code. Please try again.', 'error');
             });
         }
         
