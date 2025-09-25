@@ -3,209 +3,315 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tailwind Animations Hub</title>
+    <title>John Doe - CV</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script>
         tailwind.config = {
-            theme: {
-                extend: {
-                    animation: {
-                        'bounce': 'bounce 1s infinite',
-                        'pulse': 'pulse 2s infinite',
-                        'spin': 'spin 1s linear infinite',
-                        'ping': 'ping 1s cubic-bezier(0, 0, 0.2, 1) infinite',
-                        'float': 'float 3s ease-in-out infinite',
-                    },
-                    keyframes: {
-                        float: {
-                            '0%, 100%': { transform: 'translateY(0)' },
-                            '50%': { transform: 'translateY(-10px)' },
-                        }
-                    }
-                }
-            }
+            darkMode: 'class',
         }
     </script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        .gradient-text {
-            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+        .dark-mode-transition * {
+            transition: background-color 0.3s, color 0.3s, border-color 0.3s;
         }
-        .animation-card {
-            transition: transform 0.3s ease;
+        .print-mode {
+            display: none;
         }
-        .animation-card:hover {
-            transform: translateY(-5px);
+        @media print {
+            .no-print {
+                display: none;
+            }
+            .print-mode {
+                display: block;
+            }
+            body {
+                background: white !important;
+                color: black !important;
+            }
         }
     </style>
 </head>
-<body class="bg-gray-50 min-h-screen">
-    <!-- Header -->
-    <header class="bg-white shadow-sm sticky top-0 z-10">
-        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
-            <div class="flex items-center">
-                <div class="w-10 h-10 bg-gradient-to-r from-purple-500 to-indigo-600 rounded-full flex items-center justify-center mr-3">
-                    <i class="fas fa-bolt text-white"></i>
+<body class="bg-gray-50 text-gray-800 dark:bg-gray-900 dark:text-gray-200 dark-mode-transition font-sans">
+    <!-- Dark Mode Toggle -->
+    <div class="fixed top-4 right-4 z-50 no-print">
+        <button id="darkModeToggle" class="bg-gray-200 dark:bg-gray-700 p-3 rounded-full shadow-lg hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors">
+            <i class="fas fa-moon text-gray-800 dark:text-yellow-300" id="darkIcon"></i>
+            <i class="fas fa-sun text-yellow-500 dark:hidden" id="lightIcon"></i>
+        </button>
+    </div>
+
+    <!-- Print Button -->
+    <div class="fixed top-4 left-4 z-50 no-print">
+        <button id="printButton" class="bg-blue-500 text-white p-3 rounded-full shadow-lg hover:bg-blue-600 transition-colors">
+            <i class="fas fa-print"></i>
+        </button>
+    </div>
+
+    <!-- Main Container -->
+    <div class="container mx-auto px-4 py-8 max-w-4xl">
+        <!-- Header Section -->
+        <header class="text-center mb-8 py-8 bg-white dark:bg-gray-800 rounded-xl shadow-md">
+            <div class="flex flex-col md:flex-row items-center justify-center gap-6">
+                <div class="w-32 h-32 bg-gradient-to-r from-blue-400 to-purple-500 rounded-full flex items-center justify-center text-white text-5xl font-bold">
+                    JD
                 </div>
-                <h1 class="text-2xl font-bold gradient-text">Tailwind Animations Hub</h1>
-            </div>
-            <nav class="hidden md:flex space-x-6">
-                <a href="#playground" class="text-gray-600 hover:text-purple-600 transition-colors">Playground</a>
-                <a href="#examples" class="text-gray-600 hover:text-purple-600 transition-colors">Examples</a>
-                <a href="#resources" class="text-gray-600 hover:text-purple-600 transition-colors">Resources</a>
-            </nav>
-            <button class="md:hidden text-gray-600">
-                <i class="fas fa-bars text-xl"></i>
-            </button>
-        </div>
-    </header>
-
-    <!-- Hero Section -->
-    <section class="py-16 px-4 text-center">
-        <div class="max-w-3xl mx-auto">
-            <h1 class="text-4xl md:text-5xl font-bold mb-4">Master Tailwind CSS Animations</h1>
-            <p class="text-lg text-gray-600 mb-8">Explore and implement beautiful animations with our toolkit.</p>
-            <div class="flex flex-col sm:flex-row justify-center gap-4">
-                <a href="#playground" class="bg-gradient-to-r from-purple-500 to-indigo-600 text-white px-6 py-3 rounded-lg font-medium">Try Playground</a>
-                <a href="#examples" class="bg-white text-purple-600 px-6 py-3 rounded-lg font-medium border border-purple-200">View Examples</a>
-            </div>
-        </div>
-        
-        <div class="mt-16 flex justify-center space-x-8 flex-wrap">
-            <div class="w-16 h-16 bg-gradient-to-r from-purple-400 to-indigo-500 rounded-full animate-bounce"></div>
-            <div class="w-16 h-16 bg-gradient-to-r from-pink-400 to-red-500 rounded-lg animate-pulse"></div>
-            <div class="w-16 h-16 bg-gradient-to-r from-green-400 to-teal-500 rounded-full animate-spin"></div>
-        </div>
-    </section>
-
-    <!-- Playground Section -->
-    <section id="playground" class="py-16 bg-white">
-        <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold text-center mb-12">Animation Playground</h2>
-            
-            <div class="max-w-4xl mx-auto bg-gray-50 rounded-2xl p-8">
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                    <div class="space-y-6">
-                        <h3 class="text-xl font-semibold">Customize Animation</h3>
-                        
-                        <div>
-                            <label class="block text-gray-700 mb-2">Animation Type</label>
-                            <select class="w-full p-3 border border-gray-300 rounded-lg" id="animationSelect">
-                                <option value="bounce">Bounce</option>
-                                <option value="pulse">Pulse</option>
-                                <option value="spin">Spin</option>
-                                <option value="ping">Ping</option>
-                                <option value="float">Float</option>
-                            </select>
+                <div class="text-center md:text-left">
+                    <h1 class="text-4xl font-bold mb-2">John Doe</h1>
+                    <p class="text-xl text-blue-600 dark:text-blue-400 mb-3">Full Stack Developer</p>
+                    <div class="flex flex-wrap justify-center md:justify-start gap-4 text-gray-600 dark:text-gray-400">
+                        <div class="flex items-center">
+                            <i class="fas fa-envelope mr-2"></i>
+                            <span>john.doe@example.com</span>
                         </div>
-                        
-                        <div>
-                            <label class="block text-gray-700 mb-2">Animation Speed</label>
-                            <input type="range" min="1" max="10" value="5" class="w-full" id="speedControl">
+                        <div class="flex items-center">
+                            <i class="fas fa-phone mr-2"></i>
+                            <span>+1 (555) 123-4567</span>
                         </div>
-                        
-                        <button class="w-full bg-gradient-to-r from-purple-500 to-indigo-600 text-white py-3 rounded-lg font-medium" id="copyCode">Copy Code</button>
+                        <div class="flex items-center">
+                            <i class="fas fa-map-marker-alt mr-2"></i>
+                            <span>New York, USA</span>
+                        </div>
                     </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <!-- Left Column -->
+            <div class="lg:col-span-2 space-y-8">
+                <!-- About Section -->
+                <section class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md">
+                    <h2 class="text-2xl font-bold mb-4 text-blue-600 dark:text-blue-400 border-b-2 border-blue-200 dark:border-blue-800 pb-2">
+                        <i class="fas fa-user mr-2"></i>About Me
+                    </h2>
+                    <p class="text-gray-700 dark:text-gray-300">
+                        Passionate full-stack developer with 5+ years of experience building web applications. 
+                        Strong problem-solving skills and a keen eye for detail. Always eager to learn new 
+                        technologies and improve existing skills. Committed to writing clean, efficient, 
+                        and maintainable code.
+                    </p>
+                </section>
+
+                <!-- Experience Section -->
+                <section class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md">
+                    <h2 class="text-2xl font-bold mb-4 text-blue-600 dark:text-blue-400 border-b-2 border-blue-200 dark:border-blue-800 pb-2">
+                        <i class="fas fa-briefcase mr-2"></i>Work Experience
+                    </h2>
                     
-                    <div class="flex flex-col items-center justify-center">
-                        <h3 class="text-xl font-semibold mb-4">Preview</h3>
-                        <div class="w-40 h-40 flex items-center justify-center mb-6">
-                            <div id="playgroundElement" class="w-20 h-20 bg-gradient-to-r from-purple-400 to-indigo-500 rounded-lg animate-bounce flex items-center justify-center">
-                                <i class="fas fa-star text-white text-2xl"></i>
+                    <div class="space-y-6">
+                        <div class="border-l-4 border-blue-500 pl-4">
+                            <h3 class="text-xl font-semibold">Senior Web Developer</h3>
+                            <p class="text-blue-600 dark:text-blue-400">Tech Solutions Inc. • 2020 - Present</p>
+                            <ul class="list-disc pl-5 mt-2 text-gray-700 dark:text-gray-300">
+                                <li>Led a team of 5 developers in building a SaaS platform</li>
+                                <li>Improved application performance by 40% through code optimization</li>
+                                <li>Implemented CI/CD pipelines reducing deployment time by 60%</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="border-l-4 border-blue-500 pl-4">
+                            <h3 class="text-xl font-semibold">Web Developer</h3>
+                            <p class="text-blue-600 dark:text-blue-400">Digital Creations • 2018 - 2020</p>
+                            <ul class="list-disc pl-5 mt-2 text-gray-700 dark:text-gray-300">
+                                <li>Developed responsive websites for 20+ clients</li>
+                                <li>Integrated third-party APIs and payment gateways</li>
+                                <li>Collaborated with designers to implement UI/UX designs</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Education Section -->
+                <section class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md">
+                    <h2 class="text-2xl font-bold mb-4 text-blue-600 dark:text-blue-400 border-b-2 border-blue-200 dark:border-blue-800 pb-2">
+                        <i class="fas fa-graduation-cap mr-2"></i>Education
+                    </h2>
+                    
+                    <div class="space-y-4">
+                        <div>
+                            <h3 class="text-xl font-semibold">Master of Computer Science</h3>
+                            <p class="text-blue-600 dark:text-blue-400">University of Technology • 2016 - 2018</p>
+                            <p class="text-gray-700 dark:text-gray-300">GPA: 3.8/4.0</p>
+                        </div>
+                        
+                        <div>
+                            <h3 class="text-xl font-semibold">Bachelor of Software Engineering</h3>
+                            <p class="text-blue-600 dark:text-blue-400">State University • 2012 - 2016</p>
+                            <p class="text-gray-700 dark:text-gray-300">GPA: 3.7/4.0</p>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- Right Column -->
+            <div class="space-y-8">
+                <!-- Skills Section -->
+                <section class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md">
+                    <h2 class="text-2xl font-bold mb-4 text-blue-600 dark:text-blue-400 border-b-2 border-blue-200 dark:border-blue-800 pb-2">
+                        <i class="fas fa-code mr-2"></i>Skills
+                    </h2>
+                    
+                    <div class="space-y-4">
+                        <div>
+                            <h3 class="font-semibold mb-1">Frontend</h3>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 px-3 py-1 rounded-full text-sm">HTML/CSS</span>
+                                <span class="bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 px-3 py-1 rounded-full text-sm">JavaScript</span>
+                                <span class="bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 px-3 py-1 rounded-full text-sm">React</span>
+                                <span class="bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 px-3 py-1 rounded-full text-sm">Vue.js</span>
+                                <span class="bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 px-3 py-1 rounded-full text-sm">Tailwind CSS</span>
                             </div>
                         </div>
                         
-                        <div class="w-full bg-gray-800 text-gray-200 p-4 rounded-lg">
-                            <pre id="playgroundCode" class="text-sm">.animate-bounce {
-  animation: bounce 1s infinite;
-}</pre>
+                        <div>
+                            <h3 class="font-semibold mb-1">Backend</h3>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 px-3 py-1 rounded-full text-sm">Node.js</span>
+                                <span class="bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 px-3 py-1 rounded-full text-sm">Python</span>
+                                <span class="bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 px-3 py-1 rounded-full text-sm">PHP</span>
+                                <span class="bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 px-3 py-1 rounded-full text-sm">MySQL</span>
+                                <span class="bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 px-3 py-1 rounded-full text-sm">MongoDB</span>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <h3 class="font-semibold mb-1">Tools</h3>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-200 px-3 py-1 rounded-full text-sm">Git</span>
+                                <span class="bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-200 px-3 py-1 rounded-full text-sm">Docker</span>
+                                <span class="bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-200 px-3 py-1 rounded-full text-sm">AWS</span>
+                                <span class="bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-200 px-3 py-1 rounded-full text-sm">Figma</span>
+                            </div>
                         </div>
                     </div>
-                </div>
+                </section>
+
+                <!-- Languages Section -->
+                <section class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md">
+                    <h2 class="text-2xl font-bold mb-4 text-blue-600 dark:text-blue-400 border-b-2 border-blue-200 dark:border-blue-800 pb-2">
+                        <i class="fas fa-language mr-2"></i>Languages
+                    </h2>
+                    
+                    <div class="space-y-3">
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span>English</span>
+                                <span>Native</span>
+                            </div>
+                            <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
+                                <div class="bg-blue-500 h-2 rounded-full" style="width: 100%"></div>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span>Spanish</span>
+                                <span>Intermediate</span>
+                            </div>
+                            <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
+                                <div class="bg-blue-500 h-2 rounded-full" style="width: 60%"></div>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span>French</span>
+                                <span>Basic</span>
+                            </div>
+                            <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
+                                <div class="bg-blue-500 h-2 rounded-full" style="width: 30%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Contact Section -->
+                <section class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md">
+                    <h2 class="text-2xl font-bold mb-4 text-blue-600 dark:text-blue-400 border-b-2 border-blue-200 dark:border-blue-800 pb-2">
+                        <i class="fas fa-link mr-2"></i>Connect
+                    </h2>
+                    
+                    <div class="space-y-3">
+                        <a href="#" class="flex items-center text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
+                            <i class="fab fa-linkedin text-blue-600 dark:text-blue-400 w-6 mr-3"></i>
+                            <span>LinkedIn Profile</span>
+                        </a>
+                        
+                        <a href="#" class="flex items-center text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
+                            <i class="fab fa-github text-gray-800 dark:text-gray-200 w-6 mr-3"></i>
+                            <span>GitHub Portfolio</span>
+                        </a>
+                        
+                        <a href="#" class="flex items-center text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
+                            <i class="fab fa-twitter text-blue-400 w-6 mr-3"></i>
+                            <span>Twitter</span>
+                        </a>
+                        
+                        <a href="#" class="flex items-center text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
+                            <i class="fas fa-globe text-green-500 w-6 mr-3"></i>
+                            <span>Personal Website</span>
+                        </a>
+                    </div>
+                </section>
             </div>
         </div>
-    </section>
 
-    <!-- Examples Section -->
-    <section id="examples" class="py-16 bg-gray-50">
-        <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold text-center mb-12">Animation Examples</h2>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div class="animation-card bg-white rounded-xl p-6 shadow-md">
-                    <h3 class="text-xl font-semibold mb-4">Bounce</h3>
-                    <div class="flex justify-center py-8">
-                        <div class="w-20 h-20 bg-gradient-to-r from-purple-400 to-indigo-500 rounded-full animate-bounce"></div>
-                    </div>
-                </div>
-                
-                <div class="animation-card bg-white rounded-xl p-6 shadow-md">
-                    <h3 class="text-xl font-semibold mb-4">Pulse</h3>
-                    <div class="flex justify-center py-8">
-                        <div class="w-20 h-20 bg-gradient-to-r from-pink-400 to-red-500 rounded-lg animate-pulse"></div>
-                    </div>
-                </div>
-                
-                <div class="animation-card bg-white rounded-xl p-6 shadow-md">
-                    <h3 class="text-xl font-semibold mb-4">Spin</h3>
-                    <div class="flex justify-center py-8">
-                        <div class="w-20 h-20 bg-gradient-to-r from-green-400 to-teal-500 rounded-full animate-spin"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="bg-gray-800 text-white py-8">
-        <div class="container mx-auto px-4 text-center">
-            <p>&copy; 2023 Tailwind Animations Hub. All rights reserved.</p>
-        </div>
-    </footer>
+        <!-- Footer -->
+        <footer class="mt-12 text-center text-gray-600 dark:text-gray-400 text-sm py-4 no-print">
+            <p>© 2023 John Doe. All rights reserved.</p>
+            <p class="mt-1">Last updated: October 2023</p>
+        </footer>
+    </div>
 
     <script>
-        // Simple functionality
-        const animationSelect = document.getElementById('animationSelect');
-        const speedControl = document.getElementById('speedControl');
-        const playgroundElement = document.getElementById('playgroundElement');
-        const playgroundCode = document.getElementById('playgroundCode');
-        const copyCode = document.getElementById('copyCode');
-
-        function updatePlayground() {
-            const animation = animationSelect.value;
-            const speed = speedControl.value;
-            
-            // Remove all animation classes
-            playgroundElement.classList.remove('animate-bounce', 'animate-pulse', 'animate-spin', 'animate-ping', 'animate-float');
-            
-            // Add selected animation
-            playgroundElement.classList.add(`animate-${animation}`);
-            
-            // Update speed
-            let duration = speed <= 5 ? '1s' : '0.5s';
-            playgroundElement.style.animationDuration = duration;
-            
-            // Update code display
-            playgroundCode.textContent = `.animate-${animation} {\n  animation: ${animation} ${duration} infinite;\n}`;
-        }
-
-        animationSelect.addEventListener('change', updatePlayground);
-        speedControl.addEventListener('input', updatePlayground);
+        // Dark Mode Toggle
+        const darkModeToggle = document.getElementById('darkModeToggle');
+        const darkIcon = document.getElementById('darkIcon');
+        const lightIcon = document.getElementById('lightIcon');
         
-        copyCode.addEventListener('click', () => {
-            navigator.clipboard.writeText(playgroundCode.textContent);
-            alert('Code copied to clipboard!');
+        // Check for saved theme preference or respect OS preference
+        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+            darkIcon.classList.add('hidden');
+            lightIcon.classList.remove('hidden');
+        } else {
+            document.documentElement.classList.remove('dark');
+            darkIcon.classList.remove('hidden');
+            lightIcon.classList.add('hidden');
+        }
+        
+        darkModeToggle.addEventListener('click', () => {
+            document.documentElement.classList.toggle('dark');
+            
+            if (document.documentElement.classList.contains('dark')) {
+                localStorage.theme = 'dark';
+                darkIcon.classList.add('hidden');
+                lightIcon.classList.remove('hidden');
+            } else {
+                localStorage.theme = 'light';
+                darkIcon.classList.remove('hidden');
+                lightIcon.classList.add('hidden');
+            }
         });
-
-        // Smooth scrolling
+        
+        // Print Functionality
+        const printButton = document.getElementById('printButton');
+        printButton.addEventListener('click', () => {
+            window.print();
+        });
+        
+        // Smooth scrolling for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
                 if (target) {
-                    target.scrollIntoView({ behavior: 'smooth' });
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
                 }
             });
         });
