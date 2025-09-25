@@ -1,359 +1,230 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="km">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>A Little Something For You</title>
-    <!-- Tailwind CSS CDN -->
+    <title>CV របស់ខ្ញុំ</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
-        /* Custom styles for the Inter font and smooth transitions */
+        @import url('https://fonts.googleapis.com/css2?family=Koulen&family=Suwannaphum&display=swap');
         body {
-            font-family: "Inter", sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            background: linear-gradient(to right top, #f0e6f6, #f8e1eb); /* Very soft purple to light rose */
-            margin: 0;
-            padding: 20px; /* Add some padding for smaller screens */
-            box-sizing: border-box; /* Include padding in element's total width and height */
-            overflow: hidden; /* Prevent scrollbars if content slightly overflows during transitions */
+            font-family: 'Suwannaphum', serif;
         }
-        .password-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(to right top, #e9d5ff, #fbcfe8); /* Match body background */
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 100; /* Ensure it's on top */
-            transition: opacity 0.5s ease-out;
+        h1, h2, h3 {
+            font-family: 'Koulen', cursive;
         }
-        .password-overlay.hidden {
-            opacity: 0;
-            pointer-events: none; /* Disable interactions when hidden */
-        }
-        .card-container {
-            transition: all 0.6s ease-in-out;
-            transform-style: preserve-3d;
-            perspective: 1000px;
-            width: 100%;
-            max-width: 40rem; /* Max width for the card */
-            aspect-ratio: 4 / 5; /* Maintain a consistent card shape */
-            position: relative; /* Needed for absolute positioning of inner card */
-        }
-        .card-inner {
-            transition: transform 0.8s cubic-bezier(0.68, -0.55, 0.27, 1.55); /* More bouncy/elastic feel */
-            transform-style: preserve-3d;
-            position: absolute; /* Make inner card absolute to fill container */
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-        }
-        .card-front, .card-back {
-            backface-visibility: hidden;
-            border-radius: 1.5rem; /* rounded-3xl */
-            padding: 2.5rem; /* p-10 */
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); /* shadow-xl */
-            position: absolute; /* Both front and back are absolute within card-inner */
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-            transition: opacity 0.3s ease-in-out;
-        }
-        .card-front {
-            background-color: #ffffff; /* bg-white */
-            color: #4b5563; /* text-gray-600 */
-            z-index: 2; /* Ensure front is on top initially */
-        }
-        .card-back {
-            background: linear-gradient(to right top, #9333ea, #ec4899); /* Purple-700 to Pink-500 */
-            color: #ffffff; /* text-white */
-            transform: rotateY(180deg);
-            opacity: 0; /* Start hidden */
-            z-index: 1; /* Back is behind front initially */
-        }
-        .card-container.flipped .card-inner {
-            transform: rotateY(180deg);
-        }
-        .card-container.flipped .card-back {
-            opacity: 1; /* Show when flipped */
-            z-index: 3; /* Bring back to front after flip */
-        }
-        .card-container.flipped .card-front {
-            opacity: 0; /* Hide front when flipped */
-        }
-
-        /* Animation for content on the back of the card */
-        .card-back h2,
-        .card-back p,
-        .card-back button {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-            transition-delay: 0.3s;
-        }
-        .card-container.flipped .card-back h2,
-        .card-container.flipped .card-back p,
-        .card-container.flipped .card-back button {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .shine-button {
-            position: relative;
-            overflow: hidden;
-            z-index: 1;
-        }
-        .shine-button::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -75%;
-            width: 50%;
-            height: 100%;
-            background: rgba(255, 255, 255, 0.3);
-            transform: skewX(-20deg);
-            transition: all 0.7s ease;
-            z-index: -1;
-        }
-        .shine-button:hover::before {
-            left: 125%;
-        }
-        /* Image container and styling to ensure it fits well */
-        .animated-image-zone {
-            position: relative;
-            width: 100%;
-            max-width: 18rem;
-            height: 12rem;
-            margin-bottom: 1.5rem;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        .image-wrapper {
-            position: relative;
-            width: 100%;
-            height: 100%;
-            border-radius: 0.75rem;
-            overflow: hidden;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-            transition: transform 0.3s ease-in-out;
-            z-index: 10;
-            /* Initial state for image animation */
-            opacity: 0;
-            transform: scale(0.8);
-        }
-        .image-wrapper.show {
-            /* Final state for image animation */
-            opacity: 1;
-            transform: scale(1);
-            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-            transition-delay: 0.5s; /* Delay after password input is gone */
-        }
-        .image-wrapper:hover {
-            transform: scale(1.03);
-        }
-        #mainImage {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: center;
-        }
-
-        /* Floating elements styles and animations */
-        .floating-element {
-            position: absolute;
-            font-size: 1.5rem;
-            opacity: 0;
-            pointer-events: none;
-            z-index: 5;
-        }
-
-        /* Define specific positions and animations for each element */
-        .heart-1 {
-            top: 10%;
-            left: -10%;
-            animation: float-element-1 4s ease-in-out infinite alternate;
-            animation-delay: 0s;
-            color: #ec4899; /* Pink */
-        }
-        .star-1 {
-            top: 5%;
-            right: -10%;
-            animation: float-element-2 4.5s ease-in-out infinite alternate;
-            animation-delay: 0.5s;
-            color: #fcd34d; /* Yellow */
-        }
-        .heart-2 {
-            bottom: 10%;
-            left: -5%;
-            animation: float-element-3 3.8s ease-in-out infinite alternate;
-            animation-delay: 1s;
-            color: #a78bfa; /* Light purple */
-        }
-        .star-2 {
-            bottom: 5%;
-            right: -5%;
-            animation: float-element-4 4.2s ease-in-out infinite alternate;
-            animation-delay: 1.5s;
-            color: #9333ea; /* Darker purple */
-        }
-
-        /* Keyframes for floating animations */
-        @keyframes float-element-1 {
-            0% { opacity: 0; transform: translate(0, 0) scale(0.8); }
-            20% { opacity: 1; transform: translate(10px, -10px) scale(1.1); }
-            80% { opacity: 1; transform: translate(-5px, 5px) scale(0.9); }
-            100% { opacity: 0; transform: translate(0, 0) scale(0.8); }
-        }
-        @keyframes float-element-2 {
-            0% { opacity: 0; transform: translate(0, 0) scale(0.7); }
-            20% { opacity: 1; transform: translate(-10px, 10px) scale(1.2); }
-            80% { opacity: 1; transform: translate(5px, -5px) scale(0.8); }
-            100% { opacity: 0; transform: translate(0, 0) scale(0.7); }
-        }
-        @keyframes float-element-3 {
-            0% { opacity: 0; transform: translate(0, 0) scale(0.9); }
-            20% { opacity: 1; transform: translate(5px, -10px) scale(1.0); }
-            80% { opacity: 1; transform: translate(-10px, 10px) scale(1.1); }
-            100% { opacity: 0; transform: translate(0, 0) scale(0.9); }
-        }
-        @keyframes float-element-4 {
-            0% { opacity: 0; transform: translate(0, 0) scale(0.6); }
-            20% { opacity: 1; transform: translate(-5px, -5px) scale(1.1); }
-            80% { opacity: 1; transform: translate(10px, 10px) scale(0.7); }
-            100% { opacity: 0; transform: translate(0, 0) scale(0.6); }
+        .khmer-text {
+            font-family: 'Suwannaphum', serif;
         }
     </style>
 </head>
-<body>
-
-    <!-- Password Overlay -->
-    <div id="passwordOverlay" class="password-overlay">
-        <div class="bg-white p-8 rounded-xl shadow-2xl text-center max-w-sm w-full">
-            <h2 class="text-2xl font-bold text-purple-800 mb-6">បញ្ចូលលេខសម្ងាត់</h2>
-            <input type="password" id="passwordInput" class="w-full p-3 border border-gray-300 rounded-lg mb-4 text-center text-lg focus:outline-none focus:ring-2 focus:ring-purple-500" placeholder="លេខសម្ងាត់">
-            <button id="enterButton" class="shine-button bg-purple-700 hover:bg-purple-800 text-white font-bold py-3 px-6 rounded-full shadow-lg transform transition duration-300 ease-in-out hover:scale-105 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-opacity-75">
-                ចូលមើល
-            </button>
-            <p id="errorMessage" class="text-red-500 mt-4 hidden">លេខសម្ងាត់មិនត្រឹមត្រូវ!</p>
-        </div>
-    </div>
-
-    <div class="card-container mx-auto rounded-3xl shadow-xl p-6 md:p-10 bg-white h-[600px]">
-        <div class="card-inner">
-            <!-- Front of the card -->
-            <div class="card-front h-[600px]">
-                <h1 class="text-4xl md:text-5xl font-extrabold text-purple-800 mb-4">Hey YuE</h1>
-
-                <!-- Date and Time Display -->
-                <div class="text-center text-gray-700 mb-6">
-                    <p id="currentDateTime" class="text-xl md:text-2xl font-semibold"></p>
+<body class="bg-gray-100 text-gray-800">
+    <div class="container mx-auto px-4 py-8 max-w-4xl">
+        <!-- Header Section -->
+        <header class="bg-gradient-to-r from-blue-600 to-indigo-700 text-white rounded-lg shadow-lg p-8 mb-8">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="w-32 h-32 bg-white rounded-full flex items-center justify-center mb-4 md:mb-0 md:mr-6 shadow-md">
+                    <i class="fas fa-user text-5xl text-blue-600"></i>
                 </div>
-
-                <div class="animated-image-zone">
-                    <div class="image-wrapper" id="imageWrapper">
-                        <img id="mainImage" src="./img/love.jpg" alt="Placeholder Image" onerror="this.onerror=null;this.src='https://placehold.co/300x200/a78bfa/ffffff?text=Image+Not+Found';">
+                <div class="text-center md:text-left">
+                    <h1 class="text-3xl md:text-4xl font-bold mb-2">សុក្រ សុភា</h1>
+                    <p class="text-xl opacity-90">អ្នកអភិវឌ្ឍគេហទំព័រ</p>
+                    <div class="flex justify-center md:justify-start space-x-4 mt-4">
+                        <a href="tel:+85512345678" class="flex items-center">
+                            <i class="fas fa-phone mr-2"></i>
+                            <span>+855 12 345 678</span>
+                        </a>
+                        <a href="mailto:sok.sopheak@example.com" class="flex items-center">
+                            <i class="fas fa-envelope mr-2"></i>
+                            <span>sok.sopheak@example.com</span>
+                        </a>
                     </div>
-                    <!-- Floating elements -->
-                    <div class="floating-element heart-1">❤️</div>
-                    <div class="floating-element star-1">✨</div>
-                    <div class="floating-element heart-2">💖</div>
-                    <div class="floating-element star-2">🌟</div>
                 </div>
-                <p class="text-lg md:text-xl text-gray-600 mb-8 leading-relaxed">
-                    Just wanted to send a little something your way to remind you how much you mean to me.
-                </p>
-                <button id="revealButton" class="shine-button bg-purple-700 hover:bg-purple-800 text-white font-bold py-3 px-6 rounded-full shadow-lg transform transition duration-300 ease-in-out hover:scale-105 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-opacity-75" aria-label="Click to reveal a surprise message">
-                    Flip for a Surprise!
-                </button>
+            </div>
+        </header>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- Left Column -->
+            <div class="md:col-span-2 space-y-8">
+                <!-- About Me -->
+                <section class="bg-white rounded-lg shadow-md p-6">
+                    <h2 class="text-2xl font-bold text-blue-700 mb-4 border-b-2 border-blue-200 pb-2">
+                        <i class="fas fa-user mr-2"></i>អំពីខ្ញុំ
+                    </h2>
+                    <p class="khmer-text leading-relaxed">
+                        ខ្ញុំជាអ្នកអភិវឌ្ឍគេហទំព័រដែលមានចំណាប់អារម្មណ៍លើបច្ចេកវិទ្យា។ 
+                        ខ្ញុំមានជំនាញក្នុងការបង្កើតគេហទំព័រទាន់សម័យដោយប្រើ HTML, CSS, JavaScript 
+                        និង framework ផ្សេងៗ។ ខ្ញុំចូលចិត្តរៀនអ្វីថ្មីៗ និងដោះស្រាយបញ្ហាបច្ចេកវិទ្យា។
+                    </p>
+                </section>
+
+                <!-- Experience -->
+                <section class="bg-white rounded-lg shadow-md p-6">
+                    <h2 class="text-2xl font-bold text-blue-700 mb-4 border-b-2 border-blue-200 pb-2">
+                        <i class="fas fa-briefcase mr-2"></i>បទពិសោធន៍ការងារ
+                    </h2>
+                    
+                    <div class="mb-6">
+                        <h3 class="text-xl font-semibold text-gray-700">អ្នកអភិវឌ្ឍគេហទំព័រ - ក្រុមហ៊ុន ABC</h3>
+                        <p class="text-gray-500 mb-2">មករា ២០២២ - បច្ចុប្បន្ន</p>
+                        <ul class="list-disc pl-5 space-y-1 khmer-text">
+                            <li>បង្កើត និងថែទាំគេហទំព័រសម្រាប់ក្រុមហ៊ុន</li>
+                            <li>រចនាចំណុចប្រទាក់អ្នកប្រើប្រាស់ (UI/UX)</li>
+                            <li>សហការជាមួយក្រុមដើម្បីអភិវឌ្ឍផលិតផលថ្មី</li>
+                        </ul>
+                    </div>
+                    
+                    <div>
+                        <h3 class="text-xl font-semibold text-gray-700">អ្នកអភិវឌ្ឍគេហទំព័រ - ក្រុមហ៊ុន XYZ</h3>
+                        <p class="text-gray-500 mb-2">មេសា ២០២០ - ធ្នូ ២០២១</p>
+                        <ul class="list-disc pl-5 space-y-1 khmer-text">
+                            <li>អភិវឌ្ឍគេហទំព័រអាជីវកម្មសម្រាប់អតិថិជន</li>
+                            <li>បង្កើតប្រព័ន្ធគ្រប់គ្រងមាតិកា</li>
+                            <li>បង្កើត API សម្រាប់កម្មវិធីទូរស័ព្ទ</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <!-- Education -->
+                <section class="bg-white rounded-lg shadow-md p-6">
+                    <h2 class="text-2xl font-bold text-blue-700 mb-4 border-b-2 border-blue-200 pb-2">
+                        <i class="fas fa-graduation-cap mr-2"></i>ការអប់រំ
+                    </h2>
+                    
+                    <div class="mb-6">
+                        <h3 class="text-xl font-semibold text-gray-700">សាកលវិទ្យាល័យភូមិន្ទភ្នំពេញ</h3>
+                        <p class="text-gray-500 mb-2">បរិញ្ញាបត្រផ្នែកព័ត៌មានវិទ្យា (២០១៦-២០២០)</p>
+                        <p class="khmer-text">ជំពូកពិសេស: វិទ្យាសាស្ត្រកុំព្យូទ័រ និងវិស្វកម្មផ្នែកទូរគមនាគមន៍</p>
+                    </div>
+                    
+                    <div>
+                        <h3 class="text-xl font-semibold text-gray-700">វិទ្យាល័យព្រះស៊ីសុវត្ថិ</h3>
+                        <p class="text-gray-500 mb-2">វិទ្យាល័យ (២០១២-២០១៦)</p>
+                    </div>
+                </section>
             </div>
 
-            <!-- Back of the card (hidden message) -->
-            <div class="card-back h-[600px]">
-                <h2 class="text-3xl md:text-4xl font-extrabold mb-4">My Princess❤️</h2>
-                <p class="text-xl md:text-2xl leading-relaxed mb-8">
-                    ជូនចំពោះព្រះនាងរបស់បង។បងដឹងថាបងមិនមែនជាមនុស្សប្រុសល្អអ្វីទេតែបងនឹងសន្យាថានឹងមើលថែអូន ស្រឡាញអូនអោយដូចពេជ្យទឹក១០។បងស្លាញ់អូន ពិន យូអុី ❤️
-                </p>
-                <p class="text-lg mt-6 mb-8">
-                     ❤️Love you bbe❤️
-                </p>
-                <button id="backButton" class="shine-button bg-white text-purple-700 hover:bg-gray-100 font-bold py-3 px-6 rounded-full shadow-lg transform transition duration-300 ease-in-out hover:scale-105 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-opacity-75" aria-label="Click to go back to the front of the card">
-                    Go Back
-                </button>
+            <!-- Right Column -->
+            <div class="space-y-8">
+                <!-- Skills -->
+                <section class="bg-white rounded-lg shadow-md p-6">
+                    <h2 class="text-2xl font-bold text-blue-700 mb-4 border-b-2 border-blue-200 pb-2">
+                        <i class="fas fa-tools mr-2"></i>ជំនាញ
+                    </h2>
+                    
+                    <div class="mb-4">
+                        <h3 class="font-semibold text-gray-700 mb-2">ផ្នែកបច្ចេកទេស</h3>
+                        <div class="space-y-2">
+                            <div>
+                                <div class="flex justify-between mb-1">
+                                    <span>HTML/CSS</span>
+                                    <span>90%</span>
+                                </div>
+                                <div class="w-full bg-gray-200 rounded-full h-2">
+                                    <div class="bg-green-500 h-2 rounded-full" style="width: 90%"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between mb-1">
+                                    <span>JavaScript</span>
+                                    <span>85%</span>
+                                </div>
+                                <div class="w-full bg-gray-200 rounded-full h-2">
+                                    <div class="bg-green-500 h-2 rounded-full" style="width: 85%"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between mb-1">
+                                    <span>React</span>
+                                    <span>80%</span>
+                                </div>
+                                <div class="w-full bg-gray-200 rounded-full h-2">
+                                    <div class="bg-green-500 h-2 rounded-full" style="width: 80%"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between mb-1">
+                                    <span>Node.js</span>
+                                    <span>75%</span>
+                                </div>
+                                <div class="w-full bg-gray-200 rounded-full h-2">
+                                    <div class="bg-green-500 h-2 rounded-full" style="width: 75%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <h3 class="font-semibold text-gray-700 mb-2">ភាសា</h3>
+                        <ul class="space-y-2">
+                            <li class="flex justify-between">
+                                <span>ខ្មែរ</span>
+                                <span class="text-blue-600">ពូកែ</span>
+                            </li>
+                            <li class="flex justify-between">
+                                <span>អង់គ្លេស</span>
+                                <span class="text-blue-600">មធ្យម</span>
+                            </li>
+                            <li class="flex justify-between">
+                                <span>ថៃ</span>
+                                <span class="text-blue-600">មធ្យម</span>
+                            </li>
+                        </ul>
+                    </div>
+                </section>
+
+                <!-- Contact -->
+                <section class="bg-white rounded-lg shadow-md p-6">
+                    <h2 class="text-2xl font-bold text-blue-700 mb-4 border-b-2 border-blue-200 pb-2">
+                        <i class="fas fa-address-book mr-2"></i>ទំនាក់ទំនង
+                    </h2>
+                    
+                    <div class="space-y-3">
+                        <div class="flex items-center">
+                            <i class="fas fa-map-marker-alt text-blue-600 mr-3 w-5"></i>
+                            <span>ភ្នំពេញ, កម្ពុជា</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-phone text-blue-600 mr-3 w-5"></i>
+                            <span>+855 12 345 678</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-envelope text-blue-600 mr-3 w-5"></i>
+                            <span>sok.sopheak@example.com</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fab fa-github text-blue-600 mr-3 w-5"></i>
+                            <span>github.com/soksopheak</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fab fa-linkedin text-blue-600 mr-3 w-5"></i>
+                            <span>linkedin.com/in/soksopheak</span>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Interests -->
+                <section class="bg-white rounded-lg shadow-md p-6">
+                    <h2 class="text-2xl font-bold text-blue-700 mb-4 border-b-2 border-blue-200 pb-2">
+                        <i class="fas fa-heart mr-2"></i>ចំណាប់អារម្មណ៍
+                    </h2>
+                    
+                    <div class="flex flex-wrap gap-2">
+                        <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full">ការអាន</span>
+                        <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full">ការធ្វើដំណើរ</span>
+                        <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full">ការសរសេរកូដ</span>
+                        <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full">ភ្លេង</span>
+                        <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full">កីឡា</span>
+                    </div>
+                </section>
             </div>
         </div>
+
+        <!-- Footer -->
+        <footer class="mt-8 text-center text-gray-600 text-sm">
+            <p>© 2023 សុក្រ សុភា. រក្សាសិទ្ធិគ្រប់យ៉ាង។</p>
+        </footer>
     </div>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const passwordOverlay = document.getElementById('passwordOverlay');
-            const passwordInput = document.getElementById('passwordInput');
-            const enterButton = document.getElementById('enterButton');
-            const errorMessage = document.getElementById('errorMessage');
-            const imageWrapper = document.getElementById('imageWrapper'); // Get image wrapper for animation
-
-            const revealButton = document.getElementById('revealButton');
-            const backButton = document.getElementById('backButton');
-            const cardContainer = document.querySelector('.card-container');
-            const currentDateTimeElement = document.getElementById('currentDateTime');
-
-            const correctPassword = "180125"; // The password you requested
-
-            // Function to update date and time
-            function updateDateTime() {
-                const now = new Date();
-                const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true };
-                currentDateTimeElement.textContent = now.toLocaleDateString('en-US', options); // Using en-US for standard format
-            }
-
-            // Initial call and set interval for updating time
-            updateDateTime();
-            setInterval(updateDateTime, 1000);
-
-            // Password check logic
-            enterButton.addEventListener('click', () => {
-                if (passwordInput.value === correctPassword) {
-                    passwordOverlay.classList.add('hidden'); // Hide overlay
-                    imageWrapper.classList.add('show'); // Trigger image animation
-                } else {
-                    errorMessage.classList.remove('hidden'); // Show error message
-                    passwordInput.value = ''; // Clear input
-                }
-            });
-
-            // Allow pressing Enter key for password submission
-            passwordInput.addEventListener('keypress', (e) => {
-                if (e.key === 'Enter') {
-                    enterButton.click();
-                }
-            });
-
-            // Card flip logic
-            if (revealButton && backButton && cardContainer) {
-                revealButton.addEventListener('click', () => {
-                    cardContainer.classList.add('flipped');
-                });
-
-                backButton.addEventListener('click', () => {
-                    cardContainer.classList.remove('flipped');
-                });
-            } else {
-                console.error("Required card elements not found.");
-            }
-        });
-    </script>
 </body>
 </html>
