@@ -10,30 +10,16 @@
             theme: {
                 extend: {
                     animation: {
-                        'bounce-slow': 'bounce 3s infinite',
-                        'pulse-slow': 'pulse 3s infinite',
-                        'spin-slow': 'spin 3s linear infinite',
-                        'ping-slow': 'ping 3s cubic-bezier(0, 0, 0.2, 1) infinite',
+                        'bounce': 'bounce 1s infinite',
+                        'pulse': 'pulse 2s infinite',
+                        'spin': 'spin 1s linear infinite',
+                        'ping': 'ping 1s cubic-bezier(0, 0, 0.2, 1) infinite',
                         'float': 'float 3s ease-in-out infinite',
-                        'shake': 'shake 0.5s ease-in-out infinite',
-                        'heartbeat': 'heartbeat 1.5s ease-in-out infinite',
                     },
                     keyframes: {
                         float: {
                             '0%, 100%': { transform: 'translateY(0)' },
                             '50%': { transform: 'translateY(-10px)' },
-                        },
-                        shake: {
-                            '0%, 100%': { transform: 'translateX(0)' },
-                            '10%, 30%, 50%, 70%, 90%': { transform: 'translateX(-5px)' },
-                            '20%, 40%, 60%, 80%': { transform: 'translateX(5px)' },
-                        },
-                        heartbeat: {
-                            '0%': { transform: 'scale(1)' },
-                            '14%': { transform: 'scale(1.3)' },
-                            '28%': { transform: 'scale(1)' },
-                            '42%': { transform: 'scale(1.3)' },
-                            '70%': { transform: 'scale(1)' },
                         }
                     }
                 }
@@ -42,137 +28,20 @@
     </script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
-        }
-        
-        body {
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-            min-height: 100vh;
-        }
-        
         .gradient-text {
             background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
-        
         .animation-card {
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        
-        .animation-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-        }
-        
-        .code-block {
-            background-color: #1a202c;
-            border-radius: 0.5rem;
-            overflow: hidden;
-            max-height: 0;
-            transition: max-height 0.5s ease;
-        }
-        
-        .code-block.open {
-            max-height: 500px;
-        }
-        
-        .animation-element {
-            width: 100px;
-            height: 100px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2rem;
-            border-radius: 12px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-        }
-        
-        .user-menu {
-            display: none;
-            position: absolute;
-            top: 100%;
-            right: 0;
-            background: white;
-            border-radius: 0.5rem;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-            min-width: 150px;
-            z-index: 10;
-        }
-        
-        .user-menu.active {
-            display: block;
-        }
-        
-        .user-avatar {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-weight: bold;
-            cursor: pointer;
-        }
-        
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
-            z-index: 100;
-            justify-content: center;
-            align-items: center;
-        }
-        
-        .modal.active {
-            display: flex;
-        }
-        
-        .modal-content {
-            background: white;
-            border-radius: 1rem;
-            width: 90%;
-            max-width: 400px;
-            padding: 2rem;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-        }
-        
-        .notification {
-            position: fixed;
-            top: 1rem;
-            right: 1rem;
-            padding: 1rem 1.5rem;
-            border-radius: 0.5rem;
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-            z-index: 1000;
-            transform: translateX(100%);
             transition: transform 0.3s ease;
         }
-        
-        .notification.show {
-            transform: translateX(0);
-        }
-        
-        .notification.success {
-            background-color: #10b981;
-            color: white;
+        .animation-card:hover {
+            transform: translateY(-5px);
         }
     </style>
 </head>
-<body class="min-h-screen">
+<body class="bg-gray-50 min-h-screen">
     <!-- Header -->
     <header class="bg-white shadow-sm sticky top-0 z-10">
         <div class="container mx-auto px-4 py-4 flex justify-between items-center">
@@ -182,51 +51,14 @@
                 </div>
                 <h1 class="text-2xl font-bold gradient-text">Tailwind Animations Hub</h1>
             </div>
-            <nav class="hidden md:flex space-x-6 items-center">
+            <nav class="hidden md:flex space-x-6">
                 <a href="#playground" class="text-gray-600 hover:text-purple-600 transition-colors">Playground</a>
                 <a href="#examples" class="text-gray-600 hover:text-purple-600 transition-colors">Examples</a>
                 <a href="#resources" class="text-gray-600 hover:text-purple-600 transition-colors">Resources</a>
-                
-                <div class="relative" id="userSection">
-                    <div class="user-avatar" id="userAvatar">
-                        <i class="fas fa-user"></i>
-                    </div>
-                    <div class="user-menu" id="userMenu">
-                        <div class="p-4 border-b">
-                            <p class="font-semibold" id="userName">Guest User</p>
-                            <p class="text-sm text-gray-500" id="userEmail">guest@example.com</p>
-                        </div>
-                        <div class="p-2">
-                            <button class="w-full text-left px-3 py-2 rounded hover:bg-gray-100 transition-colors" id="profileBtn">
-                                <i class="fas fa-user-circle mr-2"></i>Profile
-                            </button>
-                            <button class="w-full text-left px-3 py-2 rounded hover:bg-gray-100 transition-colors" id="logoutBtn">
-                                <i class="fas fa-sign-out-alt mr-2"></i>Logout
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="flex space-x-2" id="authButtons">
-                    <button class="px-4 py-2 text-purple-600 border border-purple-600 rounded-lg hover:bg-purple-50 transition-colors" id="loginBtn">Login</button>
-                    <button class="px-4 py-2 bg-gradient-to-r from-purple-500 to-indigo-600 text-white rounded-lg hover:shadow-lg transition-all" id="registerBtn">Register</button>
-                </div>
             </nav>
-            <button class="md:hidden text-gray-600" id="mobileMenuBtn">
+            <button class="md:hidden text-gray-600">
                 <i class="fas fa-bars text-xl"></i>
             </button>
-        </div>
-        
-        <div class="md:hidden bg-white border-t py-4 px-4 hidden" id="mobileMenu">
-            <div class="flex flex-col space-y-4">
-                <a href="#playground" class="text-gray-600 hover:text-purple-600 transition-colors">Playground</a>
-                <a href="#examples" class="text-gray-600 hover:text-purple-600 transition-colors">Examples</a>
-                <a href="#resources" class="text-gray-600 hover:text-purple-600 transition-colors">Resources</a>
-                <div class="pt-4 border-t">
-                    <button class="w-full text-left py-2 text-purple-600" id="mobileLoginBtn">Login</button>
-                    <button class="w-full text-left py-2 text-purple-600" id="mobileRegisterBtn">Register</button>
-                </div>
-            </div>
         </div>
     </header>
 
@@ -234,10 +66,10 @@
     <section class="py-16 px-4 text-center">
         <div class="max-w-3xl mx-auto">
             <h1 class="text-4xl md:text-5xl font-bold mb-4">Master Tailwind CSS Animations</h1>
-            <p class="text-lg text-gray-600 mb-8">Explore, learn, and implement beautiful animations with our comprehensive toolkit and examples.</p>
+            <p class="text-lg text-gray-600 mb-8">Explore and implement beautiful animations with our toolkit.</p>
             <div class="flex flex-col sm:flex-row justify-center gap-4">
-                <a href="#playground" class="bg-gradient-to-r from-purple-500 to-indigo-600 text-white px-6 py-3 rounded-lg font-medium shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-1">Try Playground</a>
-                <a href="#examples" class="bg-white text-purple-600 px-6 py-3 rounded-lg font-medium border border-purple-200 hover:border-purple-400 transition-colors">View Examples</a>
+                <a href="#playground" class="bg-gradient-to-r from-purple-500 to-indigo-600 text-white px-6 py-3 rounded-lg font-medium">Try Playground</a>
+                <a href="#examples" class="bg-white text-purple-600 px-6 py-3 rounded-lg font-medium border border-purple-200">View Examples</a>
             </div>
         </div>
         
@@ -245,8 +77,6 @@
             <div class="w-16 h-16 bg-gradient-to-r from-purple-400 to-indigo-500 rounded-full animate-bounce"></div>
             <div class="w-16 h-16 bg-gradient-to-r from-pink-400 to-red-500 rounded-lg animate-pulse"></div>
             <div class="w-16 h-16 bg-gradient-to-r from-green-400 to-teal-500 rounded-full animate-spin"></div>
-            <div class="w-16 h-16 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-lg animate-ping"></div>
-            <div class="w-16 h-16 bg-gradient-to-r from-blue-400 to-cyan-500 rounded-lg animate-float"></div>
         </div>
     </section>
 
@@ -255,61 +85,40 @@
         <div class="container mx-auto px-4">
             <h2 class="text-3xl font-bold text-center mb-12">Animation Playground</h2>
             
-            <div class="max-w-4xl mx-auto bg-gradient-to-br from-purple-50 to-indigo-50 rounded-2xl p-8 shadow-lg">
+            <div class="max-w-4xl mx-auto bg-gray-50 rounded-2xl p-8">
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
                     <div class="space-y-6">
-                        <h3 class="text-xl font-semibold">Customize Your Animation</h3>
+                        <h3 class="text-xl font-semibold">Customize Animation</h3>
                         
                         <div>
                             <label class="block text-gray-700 mb-2">Animation Type</label>
-                            <select class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500" id="animationSelect">
+                            <select class="w-full p-3 border border-gray-300 rounded-lg" id="animationSelect">
                                 <option value="bounce">Bounce</option>
                                 <option value="pulse">Pulse</option>
                                 <option value="spin">Spin</option>
                                 <option value="ping">Ping</option>
                                 <option value="float">Float</option>
-                                <option value="shake">Shake</option>
-                                <option value="heartbeat">Heartbeat</option>
                             </select>
                         </div>
                         
                         <div>
                             <label class="block text-gray-700 mb-2">Animation Speed</label>
                             <input type="range" min="1" max="10" value="5" class="w-full" id="speedControl">
-                            <div class="flex justify-between text-sm text-gray-600 mt-1">
-                                <span>Slow</span>
-                                <span>Medium</span>
-                                <span>Fast</span>
-                            </div>
                         </div>
                         
-                        <div>
-                            <label class="block text-gray-700 mb-2">Element Color</label>
-                            <div class="flex space-x-2">
-                                <button class="color-option w-8 h-8 rounded-full bg-gradient-to-r from-purple-400 to-indigo-500 border-2 border-white shadow-md active" data-color="purple"></button>
-                                <button class="color-option w-8 h-8 rounded-full bg-gradient-to-r from-pink-400 to-red-500 border-2 border-white shadow-md" data-color="pink"></button>
-                                <button class="color-option w-8 h-8 rounded-full bg-gradient-to-r from-green-400 to-teal-500 border-2 border-white shadow-md" data-color="green"></button>
-                                <button class="color-option w-8 h-8 rounded-full bg-gradient-to-r from-yellow-400 to-orange-500 border-2 border-white shadow-md" data-color="yellow"></button>
-                                <button class="color-option w-8 h-8 rounded-full bg-gradient-to-r from-blue-400 to-cyan-500 border-2 border-white shadow-md" data-color="blue"></button>
-                            </div>
-                        </div>
-                        
-                        <div class="flex space-x-4">
-                            <button class="flex-1 bg-gray-200 text-gray-800 py-2 rounded-lg font-medium hover:bg-gray-300 transition-colors" id="playgroundReset">Reset</button>
-                            <button class="flex-1 bg-gradient-to-r from-purple-500 to-indigo-600 text-white py-2 rounded-lg font-medium hover:shadow-lg transition-all" id="copyCode">Copy Code</button>
-                        </div>
+                        <button class="w-full bg-gradient-to-r from-purple-500 to-indigo-600 text-white py-3 rounded-lg font-medium" id="copyCode">Copy Code</button>
                     </div>
                     
                     <div class="flex flex-col items-center justify-center">
                         <h3 class="text-xl font-semibold mb-4">Preview</h3>
                         <div class="w-40 h-40 flex items-center justify-center mb-6">
-                            <div id="playgroundElement" class="animation-element animate-bounce">
-                                <i class="fas fa-star"></i>
+                            <div id="playgroundElement" class="w-20 h-20 bg-gradient-to-r from-purple-400 to-indigo-500 rounded-lg animate-bounce flex items-center justify-center">
+                                <i class="fas fa-star text-white text-2xl"></i>
                             </div>
                         </div>
                         
                         <div class="w-full bg-gray-800 text-gray-200 p-4 rounded-lg">
-                            <pre id="playgroundCode" class="text-sm overflow-x-auto">.animate-bounce {
+                            <pre id="playgroundCode" class="text-sm">.animate-bounce {
   animation: bounce 1s infinite;
 }</pre>
                         </div>
@@ -320,99 +129,29 @@
     </section>
 
     <!-- Examples Section -->
-    <section id="examples" class="py-16 bg-gradient-to-br from-purple-50 to-indigo-50">
+    <section id="examples" class="py-16 bg-gray-50">
         <div class="container mx-auto px-4">
             <h2 class="text-3xl font-bold text-center mb-12">Animation Examples</h2>
             
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <div class="animation-card bg-white rounded-xl p-6 shadow-md">
-                    <div class="flex justify-between items-center mb-4">
-                        <h3 class="text-xl font-semibold">Bounce</h3>
-                        <button class="text-purple-600 toggle-code" data-target="example-code1">
-                            <i class="fas fa-code"></i>
-                        </button>
-                    </div>
+                    <h3 class="text-xl font-semibold mb-4">Bounce</h3>
                     <div class="flex justify-center py-8">
                         <div class="w-20 h-20 bg-gradient-to-r from-purple-400 to-indigo-500 rounded-full animate-bounce"></div>
                     </div>
-                    <div id="example-code1" class="code-block mt-4">
-                        <pre class="text-sm text-gray-200 p-4 overflow-x-auto">
-&lt;div class="animate-bounce"&gt;
-  &lt;!-- Your content --&gt;
-&lt;/div&gt;</pre>
-                    </div>
                 </div>
                 
                 <div class="animation-card bg-white rounded-xl p-6 shadow-md">
-                    <div class="flex justify-between items-center mb-4">
-                        <h3 class="text-xl font-semibold">Pulse</h3>
-                        <button class="text-purple-600 toggle-code" data-target="example-code2">
-                            <i class="fas fa-code"></i>
-                        </button>
-                    </div>
+                    <h3 class="text-xl font-semibold mb-4">Pulse</h3>
                     <div class="flex justify-center py-8">
                         <div class="w-20 h-20 bg-gradient-to-r from-pink-400 to-red-500 rounded-lg animate-pulse"></div>
                     </div>
-                    <div id="example-code2" class="code-block mt-4">
-                        <pre class="text-sm text-gray-200 p-4 overflow-x-auto">
-&lt;div class="animate-pulse"&gt;
-  &lt;!-- Your content --&gt;
-&lt;/div&gt;</pre>
-                    </div>
                 </div>
                 
                 <div class="animation-card bg-white rounded-xl p-6 shadow-md">
-                    <div class="flex justify-between items-center mb-4">
-                        <h3 class="text-xl font-semibold">Spin</h3>
-                        <button class="text-purple-600 toggle-code" data-target="example-code3">
-                            <i class="fas fa-code"></i>
-                        </button>
-                    </div>
+                    <h3 class="text-xl font-semibold mb-4">Spin</h3>
                     <div class="flex justify-center py-8">
                         <div class="w-20 h-20 bg-gradient-to-r from-green-400 to-teal-500 rounded-full animate-spin"></div>
-                    </div>
-                    <div id="example-code3" class="code-block mt-4">
-                        <pre class="text-sm text-gray-200 p-4 overflow-x-auto">
-&lt;div class="animate-spin"&gt;
-  &lt;!-- Your content --&gt;
-&lt;/div&gt;</pre>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Resources Section -->
-    <section id="resources" class="py-16 bg-white">
-        <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold text-center mb-12">Resources & Tools</h2>
-            
-            <div class="max-w-5xl mx-auto">
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    <div class="resource-card bg-gray-50 rounded-xl p-6 shadow-sm">
-                        <div class="flex items-center mb-4">
-                            <div class="w-12 h-12 bg-gradient-to-r from-purple-400 to-indigo-500 rounded-lg flex items-center justify-center mr-4">
-                                <i class="fas fa-book text-white text-xl"></i>
-                            </div>
-                            <h3 class="text-xl font-semibold">Official Documentation</h3>
-                        </div>
-                        <p class="text-gray-600 mb-4">Comprehensive guide to Tailwind CSS animations with examples and API reference.</p>
-                        <a href="https://tailwindcss.com/docs/animation" class="text-purple-600 font-medium inline-flex items-center">
-                            Visit Docs <i class="fas fa-arrow-right ml-2"></i>
-                        </a>
-                    </div>
-                    
-                    <div class="resource-card bg-gray-50 rounded-xl p-6 shadow-sm">
-                        <div class="flex items-center mb-4">
-                            <div class="w-12 h-12 bg-gradient-to-r from-green-400 to-teal-500 rounded-lg flex items-center justify-center mr-4">
-                                <i class="fas fa-play-circle text-white text-xl"></i>
-                            </div>
-                            <h3 class="text-xl font-semibold">Video Tutorials</h3>
-                        </div>
-                        <p class="text-gray-600 mb-4">Step-by-step video guides for creating custom animations with Tailwind CSS.</p>
-                        <a href="https://www.youtube.com/results?search_query=tailwind+css+animations" class="text-purple-600 font-medium inline-flex items-center">
-                            Watch Videos <i class="fas fa-arrow-right ml-2"></i>
-                        </a>
                     </div>
                 </div>
             </div>
@@ -421,368 +160,55 @@
 
     <!-- Footer -->
     <footer class="bg-gray-800 text-white py-8">
-        <div class="container mx-auto px-4">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
-                <div>
-                    <h3 class="text-lg font-semibold mb-4">Tailwind Animations Hub</h3>
-                    <p class="text-gray-400">Your complete resource for learning and implementing Tailwind CSS animations.</p>
-                </div>
-                <div>
-                    <h3 class="text-lg font-semibold mb-4">Quick Links</h3>
-                    <ul class="space-y-2">
-                        <li><a href="#playground" class="text-gray-400 hover:text-white transition-colors">Playground</a></li>
-                        <li><a href="#examples" class="text-gray-400 hover:text-white transition-colors">Examples</a></li>
-                        <li><a href="#resources" class="text-gray-400 hover:text-white transition-colors">Resources</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
-                <p>&copy; 2023 Tailwind Animations Hub. All rights reserved.</p>
-            </div>
+        <div class="container mx-auto px-4 text-center">
+            <p>&copy; 2023 Tailwind Animations Hub. All rights reserved.</p>
         </div>
     </footer>
 
-    <!-- Login Modal -->
-    <div class="modal" id="loginModal">
-        <div class="modal-content">
-            <div class="flex justify-between items-center mb-6">
-                <h2 class="text-2xl font-bold">Login to Your Account</h2>
-                <button class="text-gray-500 hover:text-gray-700" id="closeLoginModal">
-                    <i class="fas fa-times"></i>
-                </button>
-            </div>
-            <form id="loginForm">
-                <div class="mb-4">
-                    <label class="block text-gray-700 mb-2" for="loginEmail">Email Address</label>
-                    <input type="email" id="loginEmail" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500" placeholder="you@example.com" required>
-                </div>
-                <div class="mb-6">
-                    <label class="block text-gray-700 mb-2" for="loginPassword">Password</label>
-                    <input type="password" id="loginPassword" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500" placeholder="Your password" required>
-                </div>
-                <button type="submit" class="w-full bg-gradient-to-r from-purple-500 to-indigo-600 text-white py-3 rounded-lg font-medium hover:shadow-lg transition-all mb-4">Login</button>
-                <div class="text-center">
-                    <p class="text-gray-600">Don't have an account? <button type="button" class="text-purple-600 hover:underline" id="switchToRegister">Register here</button></p>
-                </div>
-            </form>
-        </div>
-    </div>
-
-    <!-- Register Modal -->
-    <div class="modal" id="registerModal">
-        <div class="modal-content">
-            <div class="flex justify-between items-center mb-6">
-                <h2 class="text-2xl font-bold">Create Your Account</h2>
-                <button class="text-gray-500 hover:text-gray-700" id="closeRegisterModal">
-                    <i class="fas fa-times"></i>
-                </button>
-            </div>
-            <form id="registerForm">
-                <div class="mb-4">
-                    <label class="block text-gray-700 mb-2" for="registerName">Full Name</label>
-                    <input type="text" id="registerName" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500" placeholder="John Doe" required>
-                </div>
-                <div class="mb-4">
-                    <label class="block text-gray-700 mb-2" for="registerEmail">Email Address</label>
-                    <input type="email" id="registerEmail" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500" placeholder="you@example.com" required>
-                </div>
-                <div class="mb-6">
-                    <label class="block text-gray-700 mb-2" for="registerPassword">Password</label>
-                    <input type="password" id="registerPassword" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500" placeholder="Create a password" required>
-                </div>
-                <button type="submit" class="w-full bg-gradient-to-r from-purple-500 to-indigo-600 text-white py-3 rounded-lg font-medium hover:shadow-lg transition-all mb-4">Create Account</button>
-                <div class="text-center">
-                    <p class="text-gray-600">Already have an account? <button type="button" class="text-purple-600 hover:underline" id="switchToLogin">Login here</button></p>
-                </div>
-            </form>
-        </div>
-    </div>
-
     <script>
-        // User state
-        let currentUser = null;
-        
-        // DOM Elements
-        const loginModal = document.getElementById('loginModal');
-        const registerModal = document.getElementById('registerModal');
-        const loginBtn = document.getElementById('loginBtn');
-        const registerBtn = document.getElementById('registerBtn');
-        const mobileLoginBtn = document.getElementById('mobileLoginBtn');
-        const mobileRegisterBtn = document.getElementById('mobileRegisterBtn');
-        const closeLoginModal = document.getElementById('closeLoginModal');
-        const closeRegisterModal = document.getElementById('closeRegisterModal');
-        const switchToRegister = document.getElementById('switchToRegister');
-        const switchToLogin = document.getElementById('switchToLogin');
-        const loginForm = document.getElementById('loginForm');
-        const registerForm = document.getElementById('registerForm');
-        const userSection = document.getElementById('userSection');
-        const authButtons = document.getElementById('authButtons');
-        const userAvatar = document.getElementById('userAvatar');
-        const userMenu = document.getElementById('userMenu');
-        const userName = document.getElementById('userName');
-        const userEmail = document.getElementById('userEmail');
-        const logoutBtn = document.getElementById('logoutBtn');
-        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-        const mobileMenu = document.getElementById('mobileMenu');
-        
-        // Playground elements
+        // Simple functionality
         const animationSelect = document.getElementById('animationSelect');
         const speedControl = document.getElementById('speedControl');
-        const colorOptions = document.querySelectorAll('.color-option');
         const playgroundElement = document.getElementById('playgroundElement');
         const playgroundCode = document.getElementById('playgroundCode');
-        const playgroundReset = document.getElementById('playgroundReset');
         const copyCode = document.getElementById('copyCode');
-        
-        // Event Listeners
-        loginBtn.addEventListener('click', () => loginModal.classList.add('active'));
-        registerBtn.addEventListener('click', () => registerModal.classList.add('active'));
-        mobileLoginBtn.addEventListener('click', () => {
-            mobileMenu.classList.add('hidden');
-            loginModal.classList.add('active');
-        });
-        mobileRegisterBtn.addEventListener('click', () => {
-            mobileMenu.classList.add('hidden');
-            registerModal.classList.add('active');
-        });
-        
-        closeLoginModal.addEventListener('click', () => loginModal.classList.remove('active'));
-        closeRegisterModal.addEventListener('click', () => registerModal.classList.remove('active'));
-        switchToRegister.addEventListener('click', () => {
-            loginModal.classList.remove('active');
-            registerModal.classList.add('active');
-        });
-        switchToLogin.addEventListener('click', () => {
-            registerModal.classList.remove('active');
-            loginModal.classList.add('active');
-        });
-        
-        // Close modals when clicking outside
-        window.addEventListener('click', (e) => {
-            if (e.target === loginModal) loginModal.classList.remove('active');
-            if (e.target === registerModal) registerModal.classList.remove('active');
-        });
-        
-        // Form submissions
-        loginForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const email = document.getElementById('loginEmail').value;
-            const password = document.getElementById('loginPassword').value;
-            
-            if (email && password) {
-                currentUser = {
-                    name: email.split('@')[0],
-                    email: email
-                };
-                
-                updateUserInterface();
-                loginModal.classList.remove('active');
-                showNotification('Login successful!', 'success');
-            }
-        });
-        
-        registerForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const name = document.getElementById('registerName').value;
-            const email = document.getElementById('registerEmail').value;
-            const password = document.getElementById('registerPassword').value;
-            
-            if (name && email && password) {
-                currentUser = {
-                    name: name,
-                    email: email
-                };
-                
-                updateUserInterface();
-                registerModal.classList.remove('active');
-                showNotification('Account created successfully!', 'success');
-            }
-        });
-        
-        // User menu toggle
-        userAvatar.addEventListener('click', () => {
-            userMenu.classList.toggle('active');
-        });
-        
-        // Close user menu when clicking outside
-        document.addEventListener('click', (e) => {
-            if (!userSection.contains(e.target)) {
-                userMenu.classList.remove('active');
-            }
-        });
-        
-        // Logout
-        logoutBtn.addEventListener('click', () => {
-            currentUser = null;
-            updateUserInterface();
-            showNotification('Logged out successfully!', 'info');
-        });
-        
-        // Mobile menu toggle
-        mobileMenuBtn.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-        });
-        
-        // Playground controls
-        animationSelect.addEventListener('change', updatePlayground);
-        speedControl.addEventListener('input', updatePlayground);
-        playgroundReset.addEventListener('click', resetPlayground);
-        copyCode.addEventListener('click', copyPlaygroundCode);
-        
-        colorOptions.forEach(option => {
-            option.addEventListener('click', function() {
-                colorOptions.forEach(opt => opt.classList.remove('active'));
-                this.classList.add('active');
-                updatePlayground();
-            });
-        });
-        
-        // Toggle code blocks in examples
-        document.querySelectorAll('.toggle-code').forEach(button => {
-            button.addEventListener('click', () => {
-                const targetId = button.getAttribute('data-target');
-                const codeBlock = document.getElementById(targetId);
-                codeBlock.classList.toggle('open');
-                
-                const icon = button.querySelector('i');
-                if (codeBlock.classList.contains('open')) {
-                    icon.classList.remove('fa-code');
-                    icon.classList.add('fa-times');
-                } else {
-                    icon.classList.remove('fa-times');
-                    icon.classList.add('fa-code');
-                }
-            });
-        });
-        
-        // Functions
-        function updateUserInterface() {
-            if (currentUser) {
-                authButtons.style.display = 'none';
-                userSection.style.display = 'block';
-                userName.textContent = currentUser.name;
-                userEmail.textContent = currentUser.email;
-                userAvatar.innerHTML = currentUser.name.charAt(0).toUpperCase();
-            } else {
-                authButtons.style.display = 'flex';
-                userSection.style.display = 'none';
-            }
-        }
-        
-        function showNotification(message, type) {
-            const notification = document.createElement('div');
-            notification.className = `notification ${type}`;
-            notification.innerHTML = `
-                <div class="flex items-center">
-                    <i class="fas fa-${type === 'success' ? 'check' : 'info'} mr-2"></i>
-                    <span>${message}</span>
-                </div>
-            `;
-            
-            document.body.appendChild(notification);
-            
-            setTimeout(() => {
-                notification.classList.add('show');
-            }, 100);
-            
-            setTimeout(() => {
-                notification.classList.remove('show');
-                setTimeout(() => {
-                    if (document.body.contains(notification)) {
-                        document.body.removeChild(notification);
-                    }
-                }, 300);
-            }, 3000);
-        }
-        
+
         function updatePlayground() {
             const animation = animationSelect.value;
             const speed = speedControl.value;
-            const color = document.querySelector('.color-option.active').getAttribute('data-color');
             
-            playgroundElement.classList.remove(
-                'animate-bounce', 'animate-pulse', 'animate-spin', 'animate-ping',
-                'animate-float', 'animate-shake', 'animate-heartbeat'
-            );
+            // Remove all animation classes
+            playgroundElement.classList.remove('animate-bounce', 'animate-pulse', 'animate-spin', 'animate-ping', 'animate-float');
             
+            // Add selected animation
             playgroundElement.classList.add(`animate-${animation}`);
             
-            let duration;
-            if (speed <= 3) {
-                duration = '3s';
-            } else if (speed <= 7) {
-                duration = '1s';
-            } else {
-                duration = '0.5s';
-            }
+            // Update speed
+            let duration = speed <= 5 ? '1s' : '0.5s';
             playgroundElement.style.animationDuration = duration;
             
-            playgroundElement.classList.remove(
-                'from-purple-400', 'to-indigo-500',
-                'from-pink-400', 'to-red-500',
-                'from-green-400', 'to-teal-500',
-                'from-yellow-400', 'to-orange-500',
-                'from-blue-400', 'to-cyan-500'
-            );
-            
-            switch(color) {
-                case 'pink':
-                    playgroundElement.classList.add('from-pink-400', 'to-red-500');
-                    break;
-                case 'green':
-                    playgroundElement.classList.add('from-green-400', 'to-teal-500');
-                    break;
-                case 'yellow':
-                    playgroundElement.classList.add('from-yellow-400', 'to-orange-500');
-                    break;
-                case 'blue':
-                    playgroundElement.classList.add('from-blue-400', 'to-cyan-500');
-                    break;
-                default:
-                    playgroundElement.classList.add('from-purple-400', 'to-indigo-500');
-            }
-            
+            // Update code display
             playgroundCode.textContent = `.animate-${animation} {\n  animation: ${animation} ${duration} infinite;\n}`;
         }
+
+        animationSelect.addEventListener('change', updatePlayground);
+        speedControl.addEventListener('input', updatePlayground);
         
-        function resetPlayground() {
-            animationSelect.value = 'bounce';
-            speedControl.value = 5;
-            colorOptions.forEach(opt => opt.classList.remove('active'));
-            colorOptions[0].classList.add('active');
-            updatePlayground();
-        }
-        
-        function copyPlaygroundCode() {
-            const code = playgroundCode.textContent;
-            navigator.clipboard.writeText(code).then(() => {
-                showNotification('Code copied to clipboard!', 'success');
-            });
-        }
-        
-        // Smooth scrolling for anchor links
+        copyCode.addEventListener('click', () => {
+            navigator.clipboard.writeText(playgroundCode.textContent);
+            alert('Code copied to clipboard!');
+        });
+
+        // Smooth scrolling
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
-                
-                const targetId = this.getAttribute('href');
-                if (targetId === '#') return;
-                
-                const targetElement = document.querySelector(targetId);
-                if (targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 80,
-                        behavior: 'smooth'
-                    });
-                    
-                    mobileMenu.classList.add('hidden');
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
                 }
             });
         });
-        
-        // Initialize
-        updateUserInterface();
-        updatePlayground();
     </script>
 </body>
 </html>
