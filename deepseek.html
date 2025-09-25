@@ -6,7 +6,7 @@
     <title>Tailwind Animations Hub</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
-        // hi
+        // love
         tailwind.config = {
             theme: {
                 extend: {
@@ -266,12 +266,10 @@
             cursor: pointer;
         }
         
-        /* Performance optimizations */
         .will-change-transform {
             will-change: transform;
         }
         
-        /* Tab system styling */
         .tabs-container {
             background: white;
             border-radius: 1rem;
@@ -307,7 +305,6 @@
             display: block;
         }
         
-        /* Notification styling */
         .notification {
             position: fixed;
             top: 1rem;
@@ -355,7 +352,6 @@
                 <a href="#examples" class="text-gray-600 hover:text-purple-600 transition-colors">Examples</a>
                 <a href="#resources" class="text-gray-600 hover:text-purple-600 transition-colors">Resources</a>
                 
-                <!-- User Section -->
                 <div class="relative" id="userSection">
                     <div class="user-avatar" id="userAvatar" aria-label="User menu" role="button" aria-expanded="false" aria-controls="userMenu">
                         <i class="fas fa-user"></i>
@@ -376,7 +372,6 @@
                     </div>
                 </div>
                 
-                <!-- Auth Buttons (shown when not logged in) -->
                 <div class="flex space-x-2" id="authButtons">
                     <button class="px-4 py-2 text-purple-600 border border-purple-600 rounded-lg hover:bg-purple-50 transition-colors" id="loginBtn">Login</button>
                     <button class="px-4 py-2 bg-gradient-to-r from-purple-500 to-indigo-600 text-white rounded-lg hover:shadow-lg transition-all" id="registerBtn">Register</button>
@@ -387,7 +382,6 @@
             </button>
         </div>
         
-        <!-- Mobile Menu -->
         <div class="md:hidden bg-white border-t py-4 px-4 hidden" id="mobileMenu">
             <div class="flex flex-col space-y-4">
                 <a href="#playground" class="text-gray-600 hover:text-purple-600 transition-colors">Playground</a>
@@ -412,7 +406,6 @@
             </div>
         </div>
         
-        <!-- Animated Elements -->
         <div class="mt-16 flex justify-center space-x-8 flex-wrap">
             <div class="w-16 h-16 bg-gradient-to-r from-purple-400 to-indigo-500 rounded-full animate-bounce will-change-transform"></div>
             <div class="w-16 h-16 bg-gradient-to-r from-pink-400 to-red-500 rounded-lg animate-pulse will-change-transform"></div>
@@ -429,7 +422,6 @@
             
             <div class="max-w-4xl mx-auto bg-gradient-to-br from-purple-50 to-indigo-50 rounded-2xl p-8 shadow-lg">
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                    <!-- Controls -->
                     <div class="space-y-6">
                         <h3 class="text-xl font-semibold">Customize Your Animation</h3>
                         
@@ -476,7 +468,6 @@
                         </div>
                     </div>
                     
-                    <!-- Preview -->
                     <div class="flex flex-col items-center justify-center">
                         <h3 class="text-xl font-semibold mb-4">Preview</h3>
                         <div class="w-40 h-40 flex items-center justify-center mb-6">
@@ -502,7 +493,6 @@
             <h2 class="text-3xl font-bold text-center mb-12">Animation Examples</h2>
             
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Example 1: Bounce -->
                 <div class="animation-card bg-white rounded-xl p-6 shadow-md">
                     <div class="flex justify-between items-center mb-4">
                         <h3 class="text-xl font-semibold">Bounce</h3>
@@ -521,7 +511,6 @@
                     </div>
                 </div>
                 
-                <!-- Example 2: Pulse -->
                 <div class="animation-card bg-white rounded-xl p-6 shadow-md">
                     <div class="flex justify-between items-center mb-4">
                         <h3 class="text-xl font-semibold">Pulse</h3>
@@ -540,7 +529,6 @@
                     </div>
                 </div>
                 
-                <!-- Example 3: Spin -->
                 <div class="animation-card bg-white rounded-xl p-6 shadow-md">
                     <div class="flex justify-between items-center mb-4">
                         <h3 class="text-xl font-semibold">Spin</h3>
@@ -559,7 +547,6 @@
                     </div>
                 </div>
                 
-                <!-- Example 4: Float -->
                 <div class="animation-card bg-white rounded-xl p-6 shadow-md">
                     <div class="flex justify-between items-center mb-4">
                         <h3 class="text-xl font-semibold">Float</h3>
@@ -590,7 +577,6 @@ keyframes: {
                     </div>
                 </div>
                 
-                <!-- Example 5: Heartbeat -->
                 <div class="animation-card bg-white rounded-xl p-6 shadow-md">
                     <div class="flex justify-between items-center mb-4">
                         <h3 class="text-xl font-semibold">Heartbeat</h3>
@@ -626,7 +612,6 @@ keyframes: {
                     </div>
                 </div>
                 
-                <!-- Example 6: Tada -->
                 <div class="animation-card bg-white rounded-xl p-6 shadow-md">
                     <div class="flex justify-between items-center mb-4">
                         <h3 class="text-xl font-semibold">Tada</h3>
@@ -671,7 +656,6 @@ keyframes: {
             <h2 class="text-3xl font-bold text-center mb-12">Resources & Tools</h2>
             
             <div class="max-w-5xl mx-auto">
-                <!-- Tab System -->
                 <div class="tabs-container mb-12">
                     <div class="tabs-header">
                         <div class="tab-header active" data-tab="documentation">Documentation</div>
@@ -682,7 +666,6 @@ keyframes: {
                     
                     <div class="tab-panel active" id="documentation-tab">
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                            <!-- Documentation -->
                             <div class="resource-card bg-gray-50 rounded-xl p-6 shadow-sm">
                                 <div class="flex items-center mb-4">
                                     <div class="w-12 h-12 bg-gradient-to-r from-purple-400 to-indigo-500 rounded-lg flex items-center justify-center mr-4">
@@ -696,7 +679,6 @@ keyframes: {
                                 </a>
                             </div>
                             
-                            <!-- Cheatsheet -->
                             <div class="resource-card bg-gray-50 rounded-xl p-6 shadow-sm">
                                 <div class="flex items-center mb-4">
                                     <div class="w-12 h-12 bg-gradient-to-r from-pink-400 to-red-500 rounded-lg flex items-center justify-center mr-4">
@@ -714,7 +696,6 @@ keyframes: {
                     
                     <div class="tab-panel" id="tutorials-tab">
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                            <!-- Tutorials -->
                             <div class="resource-card bg-gray-50 rounded-xl p-6 shadow-sm">
                                 <div class="flex items-center mb-4">
                                     <div class="w-12 h-12 bg-gradient-to-r from-green-400 to-teal-500 rounded-lg flex items-center justify-center mr-4">
@@ -728,7 +709,6 @@ keyframes: {
                                 </a>
                             </div>
                             
-                            <!-- UI Libraries -->
                             <div class="resource-card bg-gray-50 rounded-xl p-6 shadow-sm">
                                 <div class="flex items-center mb-4">
                                     <div class="w-12 h-12 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-lg flex items-center justify-center mr-4">
@@ -746,7 +726,6 @@ keyframes: {
                     
                     <div class="tab-panel" id="tools-tab">
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                            <!-- Animation Generator -->
                             <div class="resource-card bg-gray-50 rounded-xl p-6 shadow-sm">
                                 <div class="flex items-center mb-4">
                                     <div class="w-12 h-12 bg-gradient-to-r from-blue-400 to-cyan-500 rounded-lg flex items-center justify-center mr-4">
@@ -760,7 +739,6 @@ keyframes: {
                                 </a>
                             </div>
                             
-                            <!-- Code Export -->
                             <div class="resource-card bg-gray-50 rounded-xl p-6 shadow-sm">
                                 <div class="flex items-center mb-4">
                                     <div class="w-12 h-12 bg-gradient-to-r from-indigo-400 to-purple-500 rounded-lg flex items-center justify-center mr-4">
@@ -778,7 +756,6 @@ keyframes: {
                     
                     <div class="tab-panel" id="community-tab">
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                            <!-- Forums -->
                             <div class="resource-card bg-gray-50 rounded-xl p-6 shadow-sm">
                                 <div class="flex items-center mb-4">
                                     <div class="w-12 h-12 bg-gradient-to-r from-teal-400 to-green-500 rounded-lg flex items-center justify-center mr-4">
@@ -792,7 +769,6 @@ keyframes: {
                                 </a>
                             </div>
                             
-                            <!-- Showcase -->
                             <div class="resource-card bg-gray-50 rounded-xl p-6 shadow-sm">
                                 <div class="flex items-center mb-4">
                                     <div class="w-12 h-12 bg-gradient-to-r from-orange-400 to-red-500 rounded-lg flex items-center justify-center mr-4">
@@ -809,7 +785,6 @@ keyframes: {
                     </div>
                 </div>
                 
-                <!-- Additional Resources -->
                 <div class="mt-12 bg-gradient-to-r from-purple-500 to-indigo-600 rounded-2xl p-8 text-white">
                     <h3 class="text-2xl font-bold mb-4">Advanced Resources</h3>
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -968,8 +943,6 @@ keyframes: {
         const tabPanels = document.querySelectorAll('.tab-panel');
         
         // Event Listeners
-        
-        // Modal controls
         loginBtn.addEventListener('click', () => loginModal.classList.add('active'));
         registerBtn.addEventListener('click', () => registerModal.classList.add('active'));
         mobileLoginBtn.addEventListener('click', () => {
@@ -1004,9 +977,7 @@ keyframes: {
             const email = document.getElementById('loginEmail').value;
             const password = document.getElementById('loginPassword').value;
             
-            // Simple validation
             if (email && password) {
-                // Simulate login
                 currentUser = {
                     name: email.split('@')[0],
                     email: email
@@ -1014,8 +985,6 @@ keyframes: {
                 
                 updateUserInterface();
                 loginModal.classList.remove('active');
-                
-                // Show success message
                 showNotification('Login successful!', 'success');
             }
         });
@@ -1026,9 +995,7 @@ keyframes: {
             const email = document.getElementById('registerEmail').value;
             const password = document.getElementById('registerPassword').value;
             
-            // Simple validation
             if (name && email && password) {
-                // Simulate registration
                 currentUser = {
                     name: name,
                     email: email
@@ -1036,8 +1003,6 @@ keyframes: {
                 
                 updateUserInterface();
                 registerModal.classList.remove('active');
-                
-                // Show success message
                 showNotification('Account created successfully!', 'success');
             }
         });
@@ -1090,7 +1055,6 @@ keyframes: {
                 const codeBlock = document.getElementById(targetId);
                 codeBlock.classList.toggle('open');
                 
-                // Change icon
                 const icon = button.querySelector('i');
                 if (codeBlock.classList.contains('open')) {
                     icon.classList.remove('fa-code');
@@ -1105,38 +1069,30 @@ keyframes: {
         // Tab functionality
         tabHeaders.forEach(header => {
             header.addEventListener('click', () => {
-                // Remove active class from all headers and panels
                 tabHeaders.forEach(h => h.classList.remove('active'));
                 tabPanels.forEach(p => p.classList.remove('active'));
                 
-                // Add active class to clicked header
                 header.classList.add('active');
-                
-                // Show corresponding panel
                 const tabId = header.getAttribute('data-tab');
                 document.getElementById(`${tabId}-tab`).classList.add('active');
             });
         });
         
         // Functions
-        
         function updateUserInterface() {
             if (currentUser) {
-                // User is logged in
                 authButtons.style.display = 'none';
                 userSection.style.display = 'block';
                 userName.textContent = currentUser.name;
                 userEmail.textContent = currentUser.email;
                 userAvatar.innerHTML = currentUser.name.charAt(0).toUpperCase();
             } else {
-                // User is not logged in
                 authButtons.style.display = 'flex';
                 userSection.style.display = 'none';
             }
         }
         
         function showNotification(message, type) {
-            // Create notification element
             const notification = document.createElement('div');
             notification.className = `notification ${type}`;
             notification.innerHTML = `
@@ -1146,15 +1102,12 @@ keyframes: {
                 </div>
             `;
             
-            // Add to page
             document.body.appendChild(notification);
             
-            // Animate in
             setTimeout(() => {
                 notification.classList.add('show');
             }, 100);
             
-            // Remove after 3 seconds
             setTimeout(() => {
                 notification.classList.remove('show');
                 setTimeout(() => {
@@ -1170,17 +1123,14 @@ keyframes: {
             const speed = speedControl.value;
             const color = document.querySelector('.color-option.active').getAttribute('data-color');
             
-            // Remove all animation classes
             playgroundElement.classList.remove(
                 'animate-bounce', 'animate-pulse', 'animate-spin', 'animate-ping',
                 'animate-float', 'animate-shake', 'animate-heartbeat',
                 'animate-tada', 'animate-jello', 'animate-rubber-band'
             );
             
-            // Add selected animation
             playgroundElement.classList.add(`animate-${animation}`);
             
-            // Update speed
             let duration;
             if (speed <= 3) {
                 duration = '3s';
@@ -1191,7 +1141,6 @@ keyframes: {
             }
             playgroundElement.style.animationDuration = duration;
             
-            // Update color
             playgroundElement.classList.remove(
                 'from-purple-400', 'to-indigo-500',
                 'from-pink-400', 'to-red-500',
@@ -1213,11 +1162,10 @@ keyframes: {
                 case 'blue':
                     playgroundElement.classList.add('from-blue-400', 'to-cyan-500');
                     break;
-                default: // purple
+                default:
                     playgroundElement.classList.add('from-purple-400', 'to-indigo-500');
             }
             
-            // Update code display
             playgroundCode.textContent = `.animate-${animation} {\n  animation: ${animation} ${duration} infinite;\n}`;
         }
         
@@ -1254,7 +1202,6 @@ keyframes: {
                         behavior: 'smooth'
                     });
                     
-                    // Close mobile menu if open
                     mobileMenu.classList.add('hidden');
                 }
             });
